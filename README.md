@@ -11,7 +11,9 @@ Extension Movie App before
 
 - [ ] Now Playing(Movie)
 - [ ] Upcoming(Movie)
-- [ ] Top Rated(Tv, Movie)
 - [ ] Popular(TV, Movie)
+- [ ] Top Rated(Tv)
 - [ ] Airing Today(TV)
+- [ ] Movie Detail
+- [ ] TV Detail
 - [ ] Add Something later
