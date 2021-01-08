@@ -16,4 +16,5 @@ Extension Movie App before
 - [x] Airing Today(TV)
 - [x] Movie Detail
 - [x] TV Detail
+- [x] Search
 - [x] Add Something later

@@ -18,6 +18,12 @@ export const moviesApi = {
         append_to_response: "videos",
       },
     }),
+  search: (term) =>
+    api.get("movie/search", {
+      params: {
+        term: encodeURIComponent(term), //특수문자나 스페이스 등을 인코딩 하는 과정이 꼭 필요!,
+      },
+    }),
 };
 
 export const tvApi = {
@@ -28,6 +34,12 @@ export const tvApi = {
     api.get(`tv/${id}`, {
       params: {
         append_to_response: "videos",
+      },
+    }),
+  search: (term) =>
+    api.get("movie/search", {
+      params: {
+        term: encodeURIComponent(term),
       },
     }),
 };
