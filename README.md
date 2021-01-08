@@ -9,11 +9,11 @@ Extension Movie App before
 
 ## API Verbs
 
-- [ ] Now Playing(Movie)
-- [ ] Upcoming(Movie)
-- [ ] Popular(TV, Movie)
-- [ ] Top Rated(Tv)
-- [ ] Airing Today(TV)
-- [ ] Movie Detail
-- [ ] TV Detail
-- [ ] Add Something later
+- [x] Now Playing(Movie)
+- [x] Upcoming(Movie)
+- [x] Popular(TV, Movie)
+- [x] Top Rated(Tv)
+- [x] Airing Today(TV)
+- [x] Movie Detail
+- [x] TV Detail
+- [x] Add Something later
