@@ -1,5 +1,4 @@
 import React from "react";
-import reset from "styled-reset";
 import DetailPresenter from "./DetailPresenter";
 
 export default class extends React.Component {
@@ -8,7 +7,18 @@ export default class extends React.Component {
     error: null,
     loading: true,
   };
-
+  componentDidMount() {
+    const {
+      match: {
+        params: { id },
+      },
+      history: { push }, // string이 입력됐을 때 Home화면으로 push하기 위해
+    } = this.props;
+    const parsedId = parseInt(id); // string인 URL의 ID를 number로 변환
+    if (isNaN(parsedId)) {
+      return push("/"); //ID가 number가 아니면 Home화면으로 Push
+    }
+  }
   render() {
     const { result, error, loading } = this.state; // object destructing
     return <DetailPresenter result={result} error={error} loading={loading} />;
