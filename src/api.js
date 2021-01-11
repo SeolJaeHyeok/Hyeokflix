@@ -19,9 +19,9 @@ export const moviesApi = {
       },
     }),
   search: (term) =>
-    api.get("movie/search", {
+    api.get("search/movie", {
       params: {
-        term: encodeURIComponent(term), //특수문자나 스페이스 등을 인코딩 하는 과정이 꼭 필요!,
+        query: encodeURIComponent(term), //특수문자나 스페이스 등을 인코딩 하는 과정이 꼭 필요!,
       },
     }),
 };
@@ -37,9 +37,9 @@ export const tvApi = {
       },
     }),
   search: (term) =>
-    api.get("movie/search", {
+    api.get("search/tv", {
       params: {
-        term: encodeURIComponent(term),
+        query: encodeURIComponent(term), // params를 query를 요구했는데 term을 정의해줘서 에러 발생!
       },
     }),
 };
