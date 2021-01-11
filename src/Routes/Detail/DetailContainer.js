@@ -38,12 +38,14 @@ export default class extends React.Component {
     try {
       if (isMovie) {
         // movieDetail Api 호출을 하고 그 안에 있는 data에 접근
-        const request = await moviesApi.movieDetail(parsedId);
-        result = request.data;
+        // const request = await moviesApi.movieDetail(parsedId);
+        // result = request.data;
+        ({ data: result } = await moviesApi.movieDetail(parsedId));
       } else {
         // showDetail Api 호출을 하고 그 안에 있는 data에 접근
-        const request = await tvApi.showDetail(parsedId);
-        result = request.data;
+        // const request = await tvApi.showDetail(parsedId);
+        // result = request.data;
+        ({ data: result } = await tvApi.showDetail(parsedId));
       }
       console.log(result);
     } catch {
