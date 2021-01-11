@@ -1,3 +1,4 @@
+import { tvApi } from "api";
 import React from "react";
 import TVPresenter from "./TVPresenter";
 
@@ -11,7 +12,32 @@ export default class extends React.Component {
   };
 
   // name이 같을 필요는 없지만 같은게 편하기 때문에 똑같은 name 사용!
-
+  async componentDidMount() {
+    try {
+      const {
+        data: { results: topRated },
+      } = await tvApi.topRated();
+      const {
+        data: { results: popular },
+      } = await tvApi.popular();
+      const {
+        data: { results: airingToday },
+      } = await tvApi.airingToday();
+      this.setState({
+        topRated,
+        popular,
+        airingToday,
+      });
+    } catch {
+      this.setState({
+        error: "Can't find the TV Information.",
+      });
+    } finally {
+      this.setState({
+        loading: false,
+      });
+    }
+  }
   render() {
     const { topRated, popular, airingToday, error, loading } = this.state;
     return (
