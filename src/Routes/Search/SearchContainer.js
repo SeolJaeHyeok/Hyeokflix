@@ -28,7 +28,6 @@ export default class extends React.Component {
       const {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm);
-
       this.setState({
         movieResults,
         tvResults,
@@ -43,15 +42,16 @@ export default class extends React.Component {
       });
     }
   };
+
   render() {
     const { movieResults, tvResults, searchTerm, error, loading } = this.state;
     return (
       <SearchPresenter
         movieResults={movieResults}
         tvResults={tvResults}
-        searchTerm={searchTerm}
         error={error}
         loading={loading}
+        searchTerm={searchTerm}
         handleSubmit={this.handleSubmit} // 사용자가 form을 제출하면 handleSubmit 함수를 호출 => SearchPresenter에서 작성
       />
     );

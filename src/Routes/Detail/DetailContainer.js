@@ -15,14 +15,15 @@ export default class extends React.Component {
       result: null, // id를 가지고 있다면 tv, movie 상관 없이 result를 가지게 만들기 위해
       error: null,
       loading: true,
-      isMovie: pathname.includes("/movie/"), // 클래스를 만들어 state에 집어넣는 방법 === componentDidMount 내에서 this.isMovie로 정의하는 방법 => 두 가지 모두 클래스 전체에서 사용할 수 있게끔 해주는 방법
+      isMovie: pathname.includes("/movie/"),
+      // 클래스를 만들어 state에 집어넣는 방법 = componentDidMount 내에서 this.isMovie로 정의하는 방법 => 두 가지 모두 클래스 전체에서 사용할 수 있게끔 해주는 방법
     };
   }
 
   async componentDidMount() {
     const {
       match: {
-        params: { id },
+        params: { id }, // URL에서 id를 얻기 위해 props를 통해 id값에 접근
       },
       history: { push }, // string이 입력됐을 때 Home화면으로 push하기 위해
     } = this.props;
