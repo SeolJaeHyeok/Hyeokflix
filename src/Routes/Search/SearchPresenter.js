@@ -24,6 +24,7 @@ const SearchPresenter = ({
   error,
   loading,
   handleSubmit,
+  updateTerm,
 }) => (
   <Container>
     <Form onSubmit={handleSubmit}>
@@ -42,6 +43,7 @@ SearchPresenter.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  updateTerm: PropTypes.func.isRequired,
 };
 
 export default SearchPresenter;

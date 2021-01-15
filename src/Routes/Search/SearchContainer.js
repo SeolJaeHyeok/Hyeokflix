@@ -19,6 +19,8 @@ export default class extends React.Component {
     }
   };
 
+  updateTerm = () => {};
+
   searchByTerm = async () => {
     const { searchTerm } = this.state;
     this.setState({ loading: true });
@@ -54,6 +56,7 @@ export default class extends React.Component {
         loading={loading}
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit} // 사용자가 form을 제출하면 handleSubmit 함수를 호출 => SearchPresenter에서 작성
+        undateTerm={this.updateTerm}
       />
     );
   }
