@@ -31,6 +31,7 @@ const SearchPresenter = ({
       <Input
         placeholder="Search Movie of TV Shows..."
         value={searchTerm}
+        onChange={updateTerm}
       ></Input>
     </Form>
   </Container>
