@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "Components/Section";
 import Loader from "Components/Loader";
+import { tvApi } from "api";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -16,21 +17,21 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
       {topRated && topRated.length > 0 && (
         <Section title="Top Rated Shows">
           {topRated.map((show) => (
-            <span>{show.name}</span>
+            <span key={movie.id}>{show.name}</span>
           ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title="Popular TV Shows">
           {popular.map((show) => (
-            <span>{show.name}</span>
+            <span key={movie.id}>{show.name}</span>
           ))}
         </Section>
       )}
       {airingToday && airingToday.length > 0 && (
         <Section title="Today TV Shows">
           {airingToday.map((show) => (
-            <span>{show.name}</span>
+            <span key={movie.id}>{show.name}</span>
           ))}
         </Section>
       )}
