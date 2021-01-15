@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const SearchPresenter = ({
-  nowPlaying,
-  popular,
-  upComing,
+  movieResults,
+  tvResults,
+  searchTerm,
   error,
   loading,
   handleSubmit,
