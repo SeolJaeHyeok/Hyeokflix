@@ -20,6 +20,7 @@ export default class extends React.Component {
   };
 
   updateTerm = (event) => {
+    // searchTerm 업데이트 함수
     const {
       target: { value },
     } = event;
