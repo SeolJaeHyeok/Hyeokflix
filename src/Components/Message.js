@@ -9,17 +9,17 @@ const Container = styled.div`
 `;
 
 const Text = styled.span`
-  color: #e74c3c;
+  color: ${(props) => props.color};
 `;
 
-const Error = ({ text }) => (
+const Message = ({ text, color }) => (
   <Container>
-    <Text>{text}</Text>
+    <Text color={color}>{text}</Text>
   </Container>
 );
 
-Error.propTypes = {
+Message.propTypes = {
   text: PropType.string.isRequired,
 };
 
-export default Error;
+export default Message;
