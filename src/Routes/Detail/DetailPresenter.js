@@ -30,7 +30,7 @@ const Content = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
 `;
 
 const Cover = styled.div`
@@ -40,6 +40,32 @@ const Cover = styled.div`
   background-size: cover;
   height: 100%;
   border-radius: 5px;
+`;
+
+const Data = styled.div`
+  width: 70%;
+  margin-left: 10px;
+`;
+
+const Title = styled.h3`
+  font-size: 32px;
+`;
+
+const InfoContainer = styled.div`
+  margin: 20px 0px;
+`;
+
+const Infomation = styled.span``;
+
+const Divider = styled.span`
+  margin: 0 10px;
+`;
+
+const Overview = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
+  width: 50%;
+  opacity: 0.7;
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -58,6 +84,34 @@ const DetailPresenter = ({ result, loading, error }) =>
               : require("../../assets/noPosterSmall.png")
           }
         />
+        <Data>
+          <Title>
+            {result.original_title
+              ? result.original_title
+              : result.original_name}
+          </Title>
+          <InfoContainer>
+            <Infomation>
+              {result.release_date
+                ? result.release_date.substring(0, 4)
+                : result.first_air_date.substring(0, 4)}
+            </Infomation>
+            <Divider>•</Divider>
+            <Infomation>
+              {result.runtime ? result.runtime : result.episode_run_time}min
+            </Infomation>
+            <Divider>•</Divider>
+            <Infomation>
+              {result.genres &&
+                result.genres.map((genre, index) =>
+                  index === result.genres.length - 1
+                    ? genre.name
+                    : `${genre.name}/`
+                )}
+            </Infomation>
+          </InfoContainer>
+          <Overview>{result.overview}</Overview>
+        </Data>
       </Content>
     </Container>
   );
