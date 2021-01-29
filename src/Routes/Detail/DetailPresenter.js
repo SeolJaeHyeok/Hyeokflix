@@ -52,7 +52,11 @@ const DetailPresenter = ({ result, loading, error }) =>
       />
       <Content>
         <Cover
-          bgImage={`https://image.tmdb.org/t/p/original${result.poster_path}`}
+          bgImage={
+            result.poster_path
+              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+              : require("../../assets/noPosterSmall.png")
+          }
         />
       </Content>
     </Container>
