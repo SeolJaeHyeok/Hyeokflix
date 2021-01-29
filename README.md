@@ -17,4 +17,8 @@ Extension Movie App before
 - [x] Movie Detail
 - [x] TV Detail
 - [x] Search
-- [] Add Something later
+- [ ] IMDB Link
+- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
+- [ ] Collections Link
+- [ ] /collections Route
+- [ ] On TV Show, show seasons and creators
