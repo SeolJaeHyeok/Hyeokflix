@@ -5,6 +5,7 @@ import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 20px;
@@ -31,6 +32,9 @@ const SearchPresenter = ({
   updateTerm,
 }) => (
   <Container>
+    <Helmet>
+      <title>Search | Hyeokflix</title>
+    </Helmet>
     <Form onSubmit={handleSubmit}>
       <Input
         placeholder="Search Movie of TV Shows..."
