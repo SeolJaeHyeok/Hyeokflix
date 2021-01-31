@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// 추후에 다르게 스타일링 고고
-
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -12,10 +10,18 @@ const Container = styled.div`
   margin-top: 50px;
 `;
 
+const LoadingImg = styled.img`
+  width: 100%;
+  height: calc(100% - 120px);
+  background-size: cover;
+  background-position: center center;
+`;
+
 export default () => (
   <Container>
-    <span aria-label="Loading" role="img">
-      ⏰
-    </span>
+    <LoadingImg
+      src="https://media0.giphy.com/media/CH8pZqw2t0G7m/giphy.gif?cid=ecf05e47yrvub7qyb455isy74w3pzgv1ukdhafcp8kejgv3i&rid=giphy.gif"
+      alt="Waiting"
+    ></LoadingImg>
   </Container>
 );
