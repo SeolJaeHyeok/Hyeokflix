@@ -2,10 +2,10 @@ Extension Movie App before
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Detail
-- [ ] Search
+- [x] Home
+- [x] TV Shows
+- [x] Detail
+- [x] Search
 
 ## API Verbs
 
@@ -17,7 +17,7 @@ Extension Movie App before
 - [x] Movie Detail
 - [x] TV Detail
 - [x] Search
-- [ ] IMDB Link
+- [x] IMDB Link
 - [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
 - [ ] Collections Link
 - [ ] /collections Route
