@@ -54,9 +54,14 @@ const Title = styled.h3`
 
 const InfoContainer = styled.div`
   margin: 20px 0px;
+  display: flex;
+  justify-content: start;
+  align-content: center;
 `;
 
-const Infomation = styled.span``;
+const Infomation = styled.span`
+  font-size: 16px;
+`;
 
 const Divider = styled.span`
   margin: 0 10px;
@@ -67,6 +72,18 @@ const Overview = styled.p`
   line-height: 1.5;
   width: 50%;
   opacity: 0.7;
+`;
+
+const IMDB = styled.a`
+  margin-left: 10px;
+  width: 40px;
+  height: 25px;
+`;
+
+const IMDBImg = styled.img`
+  margin: 0;
+  width: 40px;
+  height: 20px;
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -123,6 +140,11 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name}/`
                 )}
             </Infomation>
+            {result.imdb_id ? (
+              <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                <IMDBImg src="https://www.fixinthemix.com/wp-content/uploads/2015/08/IMDb.png"></IMDBImg>
+              </IMDB>
+            ) : null}
           </InfoContainer>
           <Overview>{result.overview}</Overview>
         </Data>

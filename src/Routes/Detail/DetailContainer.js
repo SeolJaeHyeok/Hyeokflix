@@ -37,7 +37,6 @@ export default class extends React.Component {
 
     let result = null;
     try {
-      throw Error();
       if (isMovie) {
         // movieDetail Api 호출을 하고 그 안에 있는 data에 접근
         // const request = await moviesApi.movieDetail(parsedId);
