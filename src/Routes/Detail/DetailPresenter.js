@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import Message from "Components/Message";
@@ -10,6 +10,21 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   padding: 50px;
+`;
+
+const backdropAnim = keyframes`
+    0% {
+        opacity: 1;
+        filter: none;
+    }
+    60% {
+        opacity: 1;
+        filter: none;
+    }
+    100% {
+        opacity: 0.5;
+        filter: blur(10px);
+    }
 `;
 
 const Backdrop = styled.div`
@@ -23,7 +38,11 @@ const Backdrop = styled.div`
   background-size: cover;
   filter: blur(3px);
   opacity: 0.5;
-  z-index: 0;
+  animation-name: ${backdropAnim};
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  z-index: -1;
 `;
 
 const Content = styled.div`
@@ -34,6 +53,18 @@ const Content = styled.div`
   z-index: 1;
 `;
 
+const showAnim = keyframes`
+0% {
+    opacity: 0;
+}
+70% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+`;
+
 const Cover = styled.div`
   width: 30%;
   background-image: url(${(props) => props.bgImage});
@@ -41,11 +72,19 @@ const Cover = styled.div`
   background-size: cover;
   height: 100%;
   border-radius: 5px;
+  animation-name: ${showAnim};
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 `;
 
 const Data = styled.div`
   width: 70%;
   margin-left: 10px;
+  animation-name: ${showAnim};
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 `;
 
 const Title = styled.h3`

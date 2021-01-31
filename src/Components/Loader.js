@@ -20,7 +20,7 @@ const LoadingImg = styled.img`
 export default () => (
   <Container>
     <LoadingImg
-      src="https://media0.giphy.com/media/CH8pZqw2t0G7m/giphy.gif?cid=ecf05e47yrvub7qyb455isy74w3pzgv1ukdhafcp8kejgv3i&rid=giphy.gif"
+      src="https://media1.giphy.com/media/3ohzdOrcdpiD26TPt6/giphy.gif?cid=ecf05e47crfi61b0bexys7bsu9ekn5uf7h79u4yfp8wmsjr1&rid=giphy.gif"
       alt="Waiting"
     ></LoadingImg>
   </Container>
