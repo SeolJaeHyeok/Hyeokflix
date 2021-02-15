@@ -14,6 +14,7 @@ export default class extends React.Component {
     this.state = {
       result: null, // id를 가지고 있다면 tv, movie 상관 없이 result를 가지게 만들기 위해
       error: null,
+      credit: null,
       loading: true,
       isMovie: pathname.includes("/movie/"),
       // 클래스를 만들어 state에 집어넣는 방법 = componentDidMount 내에서 this.isMovie로 정의하는 방법 => 두 가지 모두 클래스 전체에서 사용할 수 있게끔 해주는 방법
@@ -36,27 +37,49 @@ export default class extends React.Component {
     }
 
     let result = null;
+    let credit = null;
+
     try {
       if (isMovie) {
         // movieDetail Api 호출을 하고 그 안에 있는 data에 접근
         // const request = await moviesApi.movieDetail(parsedId);
         // result = request.data;
-        ({ data: result } = await moviesApi.movieDetail(parsedId));
+        const { data } = await moviesApi.movieDetail(parsedId);
+        const { data: creditData } = await moviesApi.credits(parsedId);
+        result = data;
+        credit = creditData;
+        console.log(result);
+        console.log(credit);
+        // ({ data: result } = await moviesApi.movieDetail(parsedId));
+        // ({ data: creditData } = await moviesApi.credits(parsedId));
       } else {
         // showDetail Api 호출을 하고 그 안에 있는 data에 접근
         // const request = await tvApi.showDetail(parsedId);
         // result = request.data;
-        ({ data: result } = await tvApi.showDetail(parsedId));
+        // ({ data: result } = await tvApi.showDetail(parsedId));
+        const { data } = await tvApi.showDetail(parsedId);
+        const { data: creditData } = await tvApi.credits(parsedId);
+        result = data;
+        credit = creditData;
+        console.log(result);
+        console.log(credit);
       }
     } catch {
       this.setState({ error: "Can't find anything." });
     } finally {
-      this.setState({ loading: false, result });
+      this.setState({ loading: false, result, credit });
     }
   }
 
   render() {
-    const { result, error, loading } = this.state; // object destructing
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    const { result, error, loading, credit } = this.state; // object destructing
+    return (
+      <DetailPresenter
+        result={result}
+        error={error}
+        loading={loading}
+        credit={credit}
+      />
+    );
   }
 }

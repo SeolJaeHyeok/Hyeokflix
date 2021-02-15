@@ -126,7 +126,7 @@ const IMDBImg = styled.img`
   height: 20px;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
+const DetailPresenter = ({ result, loading, error, credit }) =>
   loading ? (
     <>
       <Helmet>
