@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import Message from "Components/Message";
+import Tab from "Components/Tab";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -91,14 +92,14 @@ const Title = styled.h3`
   font-size: 32px;
 `;
 
-const InfoContainer = styled.div`
+const MovieInfoContainer = styled.div`
   margin: 20px 0px;
   display: flex;
   justify-content: start;
   align-content: center;
 `;
 
-const Infomation = styled.span`
+const MovieInfomation = styled.span`
   font-size: 16px;
 `;
 
@@ -160,32 +161,33 @@ const DetailPresenter = ({ result, loading, error }) =>
               ? result.original_title
               : result.original_name}
           </Title>
-          <InfoContainer>
-            <Infomation>
+          <MovieInfoContainer>
+            <MovieInfomation>
               {result.release_date
                 ? result.release_date.substring(0, 4)
                 : result.first_air_date.substring(0, 4)}
-            </Infomation>
+            </MovieInfomation>
             <Divider>•</Divider>
-            <Infomation>
+            <MovieInfomation>
               {result.runtime ? result.runtime : result.episode_run_time}min
-            </Infomation>
+            </MovieInfomation>
             <Divider>•</Divider>
-            <Infomation>
+            <MovieInfomation>
               {result.genres &&
                 result.genres.map((genre, index) =>
                   index === result.genres.length - 1
                     ? genre.name
                     : `${genre.name}/`
                 )}
-            </Infomation>
+            </MovieInfomation>
             {result.imdb_id ? (
               <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
                 <IMDBImg src="https://www.fixinthemix.com/wp-content/uploads/2015/08/IMDb.png"></IMDBImg>
               </IMDB>
             ) : null}
-          </InfoContainer>
+          </MovieInfoContainer>
           <Overview>{result.overview}</Overview>
+          <Tab />
         </Data>
       </Content>
     </Container>
