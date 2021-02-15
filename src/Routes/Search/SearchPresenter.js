@@ -12,14 +12,15 @@ const Container = styled.div`
 `;
 
 const Form = styled.form`
+  display: inline-block;
   margin-bottom: 50px;
-  width: 100%;
+  width: 40%;
 `;
 
 const Input = styled.input`
   all: unset;
   width: 100%;
-  font-size: 28px;
+  font-size: 26px;
 `;
 
 const SearchPresenter = ({
