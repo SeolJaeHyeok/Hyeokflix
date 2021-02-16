@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/hyeokflix/static/js/main.0f0dca89.chunk.js",
+    "main.js.map": "/hyeokflix/static/js/main.0f0dca89.chunk.js.map",
+    "runtime-main.js": "/hyeokflix/static/js/runtime-main.c010b2bc.js",
+    "runtime-main.js.map": "/hyeokflix/static/js/runtime-main.c010b2bc.js.map",
+    "static/js/2.386cbb10.chunk.js": "/hyeokflix/static/js/2.386cbb10.chunk.js",
+    "static/js/2.386cbb10.chunk.js.map": "/hyeokflix/static/js/2.386cbb10.chunk.js.map",
+    "index.html": "/hyeokflix/index.html",
+    "static/js/2.386cbb10.chunk.js.LICENSE.txt": "/hyeokflix/static/js/2.386cbb10.chunk.js.LICENSE.txt",
+    "static/media/noPosterSmall.png": "/hyeokflix/static/media/noPosterSmall.ea2ad102.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c010b2bc.js",
+    "static/js/2.386cbb10.chunk.js",
+    "static/js/main.0f0dca89.chunk.js"
+  ]
+}
