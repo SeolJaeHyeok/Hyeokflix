@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 import Loader from "Components/Loader";
@@ -9,6 +9,7 @@ import Casting from "Components/Casting";
 import Crews from "Components/Crew";
 import Company from "Components/Company";
 import Country from "Components/Country";
+import Video from "Components/Video";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -131,15 +132,46 @@ const IMDBImg = styled.img`
 `;
 
 const TabContainer = styled.div`
-  font-size: 24px;
   width: 100%;
   display: flex;
-  align-content: space-around;
+  position: absolute;
+  bottom: 10px;
+  justify-content: center;
 `;
 
-const ProductionTab = styled(Link)``;
+const Tab = styled(Link)`
+  border: 2px solid #e74c3c;
+  color: ${(props) => (props.current === "true" ? "white" : "#e74c3c")};
+  background-color: ${(props) =>
+    props.current === "true" ? "#e74c3c" : "transparent"};
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  margin-top: 50px;
+  :not(:last-child) {
+    margin-right: 20px;
+  }
 
-const VideoTab = styled(Link)``;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: #e74c3c;
+  }
+
+  &:first-child {
+    border-radius: 10px;
+    border-left: 2px solid #e74c3c;
+  }
+
+  &:last-child {
+    border-radius: 10px;
+    border-right: 2px solid #e74c3c;
+  }
+`;
 
 const DetailPresenter = ({
   location,
@@ -210,19 +242,53 @@ const DetailPresenter = ({
           </MovieInfoContainer>
           <Overview>{result.overview}</Overview>
         </Data>
+        <TabContainer>
+          <Tab
+            current={location.pathname.includes("/video").toString()}
+            to={match.url + "/video"}
+          >
+            Trailer
+          </Tab>
+
+          <Tab
+            current={location.pathname.includes("/information").toString()}
+            to={match.url + "/information"}
+          >
+            More
+          </Tab>
+        </TabContainer>
       </Content>
-      {credit.cast && credit.cast.length > 0 && <Casting casts={credit.cast} />}
-      {result.original_name && credit.crew && credit.crew.length > 0 && (
-        <Crews crews={credit.crew} />
-      )}
-      {result.production_companies &&
-        result.production_companies.length > 0 && (
-          <Company companies={result.production_companies} />
-        )}
-      {result.production_countries &&
-        result.production_countries.length > 0 && (
-          <Country countries={result.production_countries} />
-        )}
+
+      <Switch>
+        <Route path={`/movie/:id/video`} exact>
+          {result.videos.results.map((vid) => (
+            <Video key={vid.key} videoKey={vid.key} />
+          ))}
+        </Route>
+        <Route path={`/show/:id/video`} exact>
+          {result.videos.results.map((vid) => (
+            <Video key={vid.key} videoKey={vid.key} />
+          ))}
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path={`/movie/:id/information`} exact>
+          {credit.cast && credit.cast.length > 0 && (
+            <Casting casts={credit.cast} />
+          )}
+          {result.original_name && credit.crew && credit.crew.length > 0 && (
+            <Crews crews={credit.crew} />
+          )}
+          {result.production_companies &&
+            result.production_companies.length > 0 && (
+              <Company companies={result.production_companies} />
+            )}
+          {result.production_countries &&
+            result.production_countries.length > 0 && (
+              <Country countries={result.production_countries} />
+            )}
+        </Route>
+      </Switch>
     </Container>
   );
 };
