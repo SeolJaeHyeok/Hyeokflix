@@ -1,4 +1,4 @@
-import React from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -63,7 +63,7 @@ const Company = ({ companies }) => {
     <>
       {companies && (
         <>
-          <Header>Company</Header>
+          <Header>Production Company</Header>
           <CompaniesContainer>
             {companies.map((com) => (
               <CompaniesItem

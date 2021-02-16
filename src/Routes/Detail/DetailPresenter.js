@@ -8,6 +8,7 @@ import Message from "Components/Message";
 import Casting from "Components/Casting";
 import Crews from "Components/Crew";
 import Company from "Components/Company";
+import Country from "Components/Country";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -217,6 +218,10 @@ const DetailPresenter = ({
       {result.production_companies &&
         result.production_companies.length > 0 && (
           <Company companies={result.production_companies} />
+        )}
+      {result.production_countries &&
+        result.production_countries.length > 0 && (
+          <Country countries={result.production_countries} />
         )}
     </Container>
   );
