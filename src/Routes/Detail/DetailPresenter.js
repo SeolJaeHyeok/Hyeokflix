@@ -1,10 +1,11 @@
 import React from "react";
+import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import Message from "Components/Message";
-import Tab from "Components/Tab";
+import Casting from "Components/Casting";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -93,7 +94,7 @@ const Title = styled.h3`
 `;
 
 const MovieInfoContainer = styled.div`
-  margin: 20px 0px;
+  margin: 40px 0px;
   display: flex;
   justify-content: start;
   align-content: center;
@@ -108,9 +109,9 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.5;
-  width: 50%;
+  width: 70%;
   opacity: 0.7;
 `;
 
@@ -126,8 +127,26 @@ const IMDBImg = styled.img`
   height: 20px;
 `;
 
-const DetailPresenter = ({ result, loading, error, credit }) =>
-  loading ? (
+const TabContainer = styled.div`
+  font-size: 24px;
+  width: 100%;
+  display: flex;
+  align-content: space-around;
+`;
+
+const ProductionTab = styled(Link)``;
+
+const VideoTab = styled(Link)``;
+
+const DetailPresenter = ({
+  location,
+  match,
+  result,
+  loading,
+  error,
+  credit,
+}) => {
+  return loading ? (
     <>
       <Helmet>
         <title>Loading | Hyeokflix</title>
@@ -187,16 +206,18 @@ const DetailPresenter = ({ result, loading, error, credit }) =>
             ) : null}
           </MovieInfoContainer>
           <Overview>{result.overview}</Overview>
-          <Tab />
         </Data>
       </Content>
+      {credit.cast && credit.cast.length > 0 && <Casting casts={credit.cast} />}
     </Container>
   );
+};
 
 DetailPresenter.propTypes = {
   result: PropTypes.object,
   loading: PropTypes.bool.isRequired,
+  credit: PropTypes.object,
   error: PropTypes.string,
 };
 
-export default DetailPresenter;
+export default withRouter(DetailPresenter);

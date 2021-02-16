@@ -48,8 +48,6 @@ export default class extends React.Component {
         const { data: creditData } = await moviesApi.credits(parsedId);
         result = data;
         credit = creditData;
-        console.log(result);
-        console.log(credit);
         // ({ data: result } = await moviesApi.movieDetail(parsedId));
         // ({ data: creditData } = await moviesApi.credits(parsedId));
       } else {
@@ -61,8 +59,6 @@ export default class extends React.Component {
         const { data: creditData } = await tvApi.credits(parsedId);
         result = data;
         credit = creditData;
-        console.log(result);
-        console.log(credit);
       }
     } catch {
       this.setState({ error: "Can't find anything." });
