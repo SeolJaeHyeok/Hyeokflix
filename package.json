@@ -27,7 +27,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "yarn run build"
   },
-  "homepage": "https://SeolJaeHyeok.github.io/hyeokflix",
+  "homepage": "https://blissful-colden-d3fd0d.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
