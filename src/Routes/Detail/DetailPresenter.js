@@ -10,6 +10,7 @@ import Crews from "Components/Crew";
 import Company from "Components/Company";
 import Country from "Components/Country";
 import Video from "Components/Video";
+import Series from "Components/Series";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -151,25 +152,17 @@ const Tab = styled(Link)`
   align-items: center;
   font-size: 15px;
   margin-top: 50px;
+  border-radius: 10px;
+  border-left: 2px solid #e74c3c;
+  transition: 0.3s ease-in-out;
+
   :not(:last-child) {
     margin-right: 20px;
   }
 
-  transition: 0.3s ease-in-out;
-
   &:hover {
     color: white;
     background-color: #e74c3c;
-  }
-
-  &:first-child {
-    border-radius: 10px;
-    border-left: 2px solid #e74c3c;
-  }
-
-  &:last-child {
-    border-radius: 10px;
-    border-right: 2px solid #e74c3c;
   }
 `;
 
@@ -249,29 +242,33 @@ const DetailPresenter = ({
           >
             Trailer
           </Tab>
-
           <Tab
             current={location.pathname.includes("/information").toString()}
             to={match.url + "/information"}
           >
             More
           </Tab>
+          {result.original_name && (
+            <Tab
+              current={location.pathname.includes("/series").toString()}
+              to={match.url + "/series"}
+            >
+              Series
+            </Tab>
+          )}
         </TabContainer>
       </Content>
-
       <Switch>
         <Route path={`/movie/:id/video`} exact>
           {result.videos.results.map((vid) => (
             <Video key={vid.key} videoKey={vid.key} />
           ))}
         </Route>
-        <Route path={`/show/:id/video`} exact>
+        <Route path={`/tv/:id/video`} exact>
           {result.videos.results.map((vid) => (
             <Video key={vid.key} videoKey={vid.key} />
           ))}
         </Route>
-      </Switch>
-      <Switch>
         <Route path={`/movie/:id/information`} exact>
           {credit.cast && credit.cast.length > 0 && (
             <Casting casts={credit.cast} />
@@ -288,6 +285,27 @@ const DetailPresenter = ({
               <Country countries={result.production_countries} />
             )}
         </Route>
+        <Route path={`/tv/:id/information`} exact>
+          {credit.cast && credit.cast.length > 0 && (
+            <Casting casts={credit.cast} />
+          )}
+          {result.original_name && credit.crew && credit.crew.length > 0 && (
+            <Crews crews={credit.crew} />
+          )}
+          {result.production_companies &&
+            result.production_companies.length > 0 && (
+              <Company companies={result.production_companies} />
+            )}
+          {result.production_countries &&
+            result.production_countries.length > 0 && (
+              <Country countries={result.production_countries} />
+            )}
+        </Route>
+        {result.original_name && result.seasons && (
+          <Route path={`/tv/:id/series`} exact>
+            <Series series={result.seasons} />
+          </Route>
+        )}
       </Switch>
     </Container>
   );
