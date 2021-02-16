@@ -69,7 +69,7 @@ const Crews = ({ crews }) => {
             bgUrl={
               crew.profile_path
                 ? `https://image.tmdb.org/t/p/w200${crew.profile_path}`
-                : "../noImage.png"
+                : "https://kknd26.ru/images/no-photo-nevinka.png"
             }
           >
             <Name>{crew.name}</Name>

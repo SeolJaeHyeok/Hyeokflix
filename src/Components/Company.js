@@ -71,7 +71,7 @@ const Company = ({ companies }) => {
                 bgUrl={
                   com.logo_path
                     ? `https://image.tmdb.org/t/p/w300${com.logo_path}`
-                    : "../noImage.png"
+                    : "https://kknd26.ru/images/no-photo-nevinka.png"
                 }
               >
                 <Name>{com.name}</Name>

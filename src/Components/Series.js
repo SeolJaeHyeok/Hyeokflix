@@ -62,7 +62,7 @@ const Series = ({ series }) => {
             bgUrl={
               s.poster_path
                 ? `https://image.tmdb.org/t/p/w300${s.poster_path}`
-                : "https://nomadcoders.co/m.png"
+                : "https://kknd26.ru/images/no-photo-nevinka.png"
             }
           >
             <Name>{s.name}</Name>

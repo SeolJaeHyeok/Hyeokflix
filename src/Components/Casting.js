@@ -69,7 +69,7 @@ const Casting = ({ casts }) => {
             bgUrl={
               cast.profile_path
                 ? `https://image.tmdb.org/t/p/w200${cast.profile_path}`
-                : "../noImage.png"
+                : "https://kknd26.ru/images/no-photo-nevinka.png"
             }
           >
             <Name>{cast.name}</Name>
