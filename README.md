@@ -18,7 +18,9 @@ Extension Movie App before
 - [x] TV Detail
 - [x] Search
 - [x] IMDB Link
-- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] Collections Link
-- [ ] /collections Route
-- [ ] On TV Show, show seasons and creators
+- [x] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
+- [ ] Make Slider - keep going
+
+# Preview
+
+[netlify](https://blissful-colden-d3fd0d.netlify.app/)
