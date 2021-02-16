@@ -3,14 +3,14 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Header = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 24px;
   color: white;
 `;
 
-const CastContainer = styled.div`
+const CrewContainer = styled.div`
   width: 100%;
-  margin: 30px auto;
+  margin: 50px auto;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 120px);
@@ -37,7 +37,7 @@ const Name = styled.div`
   transition: 0.3s ease-in-out;
 `;
 
-const CastItem = styled.div`
+const CrewItem = styled.div`
   background: ${(props) => `url(${props.bgUrl})`};
   background-size: cover;
   background-position: center center;
@@ -58,44 +58,42 @@ const CastItem = styled.div`
   }
 `;
 
-const Casting = ({ casts }) => {
+const Crews = ({ crews }) => {
   return (
     <>
-      <Header>Casting</Header>
-      <CastContainer>
-        {casts.slice(0, 13).map((cast) => (
-          <CastItem
-            key={cast.cast_id}
+      <Header>Crews</Header>
+      <CrewContainer>
+        {crews.slice(0, 13).map((crew) => (
+          <CrewItem
+            key={crew.credit_id}
             bgUrl={
-              cast.profile_path
-                ? `https://image.tmdb.org/t/p/w200${cast.profile_path}`
+              crew.profile_path
+                ? `https://image.tmdb.org/t/p/w200${crew.profile_path}`
                 : "../noImage.png"
             }
           >
-            <Name>{cast.name}</Name>
-          </CastItem>
+            <Name>{crew.name}</Name>
+          </CrewItem>
         ))}
-        {casts.length >= 14 && (
-          <CastItem>{`And ${casts.length - 14} more`}</CastItem>
+        {crews.length >= 14 && (
+          <CrewItem>{`And ${crews.length - 14} more`}</CrewItem>
         )}
-      </CastContainer>
+      </CrewContainer>
     </>
   );
 };
 
-Casting.propTypes = {
-  casts: PropTypes.arrayOf(
+Crews.propTypes = {
+  crews: PropTypes.arrayOf(
     PropTypes.shape({
-      cast_id: PropTypes.number,
-      character: PropTypes.string,
       credit_id: PropTypes.string,
+      department: PropTypes.string,
       gender: PropTypes.number,
       id: PropTypes.number,
       name: PropTypes.string,
-      order: PropTypes.number,
+      job: PropTypes.string,
       profile_path: PropTypes.string,
     })
   ),
 };
-
-export default Casting;
+export default Crews;

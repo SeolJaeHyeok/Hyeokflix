@@ -6,6 +6,7 @@ import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import Message from "Components/Message";
 import Casting from "Components/Casting";
+import Crews from "Components/Crew";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -109,7 +110,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.5;
   width: 70%;
   opacity: 0.7;
@@ -208,7 +209,11 @@ const DetailPresenter = ({
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
+
       {credit.cast && credit.cast.length > 0 && <Casting casts={credit.cast} />}
+      {result.original_name && credit.crew && credit.crew.length > 0 && (
+        <Crews crews={credit.crew} />
+      )}
     </Container>
   );
 };
