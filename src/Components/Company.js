@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -8,7 +8,7 @@ const Header = styled.div`
   color: white;
 `;
 
-const CastContainer = styled.div`
+const CompaniesContainer = styled.div`
   width: 100%;
   margin: 30px auto;
   display: grid;
@@ -37,7 +37,7 @@ const Name = styled.div`
   transition: 0.3s ease-in-out;
 `;
 
-const CastItem = styled.div`
+const CompaniesItem = styled.div`
   background: ${(props) => `url(${props.bgUrl})`};
   background-size: cover;
   background-position: center center;
@@ -58,44 +58,41 @@ const CastItem = styled.div`
   }
 `;
 
-const Casting = ({ casts }) => {
+const Company = ({ companies }) => {
   return (
     <>
-      <Header>Casting</Header>
-      <CastContainer>
-        {casts.slice(0, 13).map((cast) => (
-          <CastItem
-            key={cast.cast_id}
-            bgUrl={
-              cast.profile_path
-                ? `https://image.tmdb.org/t/p/w200${cast.profile_path}`
-                : "../noImage.png"
-            }
-          >
-            <Name>{cast.name}</Name>
-          </CastItem>
-        ))}
-        {casts.length >= 14 && (
-          <CastItem>{`And ${casts.length - 14} more`}</CastItem>
-        )}
-      </CastContainer>
+      {companies && (
+        <>
+          <Header>Company</Header>
+          <CompaniesContainer>
+            {companies.map((com) => (
+              <CompaniesItem
+                key={com.id}
+                bgUrl={
+                  com.logo_path
+                    ? `https://image.tmdb.org/t/p/w300${com.logo_path}`
+                    : "../noImage.png"
+                }
+              >
+                <Name>{com.name}</Name>
+              </CompaniesItem>
+            ))}
+          </CompaniesContainer>
+        </>
+      )}
     </>
   );
 };
 
-Casting.propTypes = {
-  casts: PropTypes.arrayOf(
+Company.propTypes = {
+  companies: PropTypes.arrayOf(
     PropTypes.shape({
-      cast_id: PropTypes.number,
-      character: PropTypes.string,
-      credit_id: PropTypes.string,
-      gender: PropTypes.number,
       id: PropTypes.number,
+      logo_path: PropTypes.string,
       name: PropTypes.string,
-      order: PropTypes.number,
-      profile_path: PropTypes.string,
+      origin_country: PropTypes.string,
     })
   ),
 };
 
-export default Casting;
+export default Company;

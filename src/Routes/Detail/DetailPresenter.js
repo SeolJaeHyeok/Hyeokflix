@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 import Message from "Components/Message";
 import Casting from "Components/Casting";
 import Crews from "Components/Crew";
+import Company from "Components/Company";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -209,11 +210,14 @@ const DetailPresenter = ({
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
-
       {credit.cast && credit.cast.length > 0 && <Casting casts={credit.cast} />}
       {result.original_name && credit.crew && credit.crew.length > 0 && (
         <Crews crews={credit.crew} />
       )}
+      {result.production_companies &&
+        result.production_companies.length > 0 && (
+          <Company companies={result.production_companies} />
+        )}
     </Container>
   );
 };
