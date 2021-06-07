@@ -6,6 +6,9 @@ Extension Movie App before
 - [x] TV Shows
 - [x] Detail
 - [x] Search
+- [ ] More pretty UI
+- [ ] Add animation
+- [ ] Have to make Slider
 
 ## API Verbs
 
@@ -19,7 +22,7 @@ Extension Movie App before
 - [x] Search
 - [x] IMDB Link
 - [x] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] Make Slider - keep going
+- [ ] And so on...
 
 # Preview
 
