@@ -1,9 +1,6 @@
 {
-  "rootDir": "src",
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "*": ["*"]
-    }
-  }
+    "baseUrl": "src"
+  },
+  "include": ["src"]
 }
