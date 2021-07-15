@@ -10,10 +10,12 @@ import Home from "pages/Home";
 import Tv from "pages/Tv";
 import Detail from "pages/Detail";
 import Search from "pages/Search";
+import Header from "./Header";
 
 export default () => (
-  <>
-    <Router>
+  <Router>
+    <>
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/tv" component={Tv} />
@@ -21,6 +23,6 @@ export default () => (
         <Route path="/detail" component={Detail} />
         <Redirect from="*" to="/" />
       </Switch>
-    </Router>
-  </>
+    </>
+  </Router>
 );
