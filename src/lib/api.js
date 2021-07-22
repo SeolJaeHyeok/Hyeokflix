@@ -52,6 +52,17 @@ export const tvApi = {
     }),
 };
 
+// export const multiSearchApi = {
+//   multiSearch: (term) =>
+//     api.get("search/multi", {
+//       params: {
+//         query: term,
+//         include_adult: true,
+//         page: 1,
+//       },
+//     }),
+// };
+
 // api.get("movie/508943/similar");
 // api.get("movie/508943/reviews");
 
