@@ -16,7 +16,7 @@ export const movieApi = {
   movieDetail: (movie_id) =>
     api.get(`movie/${movie_id}`, {
       params: {
-        append_to_response: "videos,credits,similar",
+        append_to_response: "videos,credits,similar,recommendations",
       },
     }),
   search: (term) =>
@@ -35,7 +35,7 @@ export const tvApi = {
   showDetail: (tv_id) =>
     api.get(`tv/${tv_id}`, {
       params: {
-        append_to_response: "videos,credits,similar",
+        append_to_response: "videos,credits,similar,recommendations",
       },
     }),
   search: (term) =>
