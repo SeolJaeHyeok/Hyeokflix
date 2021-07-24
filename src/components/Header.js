@@ -51,8 +51,8 @@ const Header = ({ location: { pathname } }) => (
       <SLink to="/" className="appName">
         Hyeokflix
       </SLink>
-      <HeaderItem current={pathname === "/"}>
-        <SLink to="/">Movies</SLink>
+      <HeaderItem current={pathname === "/movie"}>
+        <SLink to="/movie">Movies</SLink>
       </HeaderItem>
       <HeaderItem current={pathname === "/tv"}>
         <SLink to="/tv">TV</SLink>

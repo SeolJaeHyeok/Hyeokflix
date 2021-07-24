@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Home from "components/Home/HomeViewer";
+import Movie from "components/Movie/MovieViewer";
 import Tv from "components/Tv/TvViewer";
 import Detail from "components/Detail/DetailViewer";
 import Search from "components/Search/SearchViewer";
@@ -18,6 +19,7 @@ export default () => (
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/movie" component={Movie} />
         <Route path="/tv" component={Tv} />
         <Route path="/search" exact component={Search} />
         <Route

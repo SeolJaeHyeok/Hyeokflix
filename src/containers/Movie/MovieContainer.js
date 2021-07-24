@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import HomeViewer from "components/Home/HomeViewer";
+import MovieViewer from "components/Movie/MovieViewer";
 import { movieApi } from "lib/api";
 
-const HomeContainer = () => {
+const MovieContainer = () => {
   const [nowPlaying, setNowPlaying] = useState(null);
   const [upComing, setUpComing] = useState(null);
   const [popular, setPopular] = useState(null);
@@ -42,7 +42,7 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <HomeViewer
+    <MovieViewer
       nowPlaying={nowPlaying}
       upComing={upComing}
       popular={popular}
@@ -53,4 +53,4 @@ const HomeContainer = () => {
   );
 };
 
-export default HomeContainer;
+export default MovieContainer;
