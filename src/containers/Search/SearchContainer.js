@@ -3,8 +3,8 @@ import SearchViewer from "components/Search/SearchViewer";
 import { movieApi, tvApi } from "lib/api";
 
 const SearchContainer = () => {
-  const [movieResults, setMovieResults] = useState(null);
-  const [tvResults, setTvResults] = useState(null);
+  const [movieResults, setMovieResults] = useState([]);
+  const [tvResults, setTvResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); // TODO: updateTerm 함수 작성
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,6 @@ const SearchContainer = () => {
 
   searchByTerm = async () => {
     try {
-      setLoading(true);
       const {
         data: { results: movieResults },
       } = await movieApi.search(searchTerm);
@@ -25,6 +24,7 @@ const SearchContainer = () => {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm);
 
+      setLoading(true);
       setMovieResults(movieResults);
       setTvResults(tvResults);
     } catch (e) {
@@ -34,6 +34,10 @@ const SearchContainer = () => {
       setLoading(false);
     }
   };
+  // useEffect(() => {
+  //   // setLoading(true);
+  //   handleSubmit();
+  // });
 
   return (
     <SearchViewer

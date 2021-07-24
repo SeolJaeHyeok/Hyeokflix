@@ -65,5 +65,6 @@ export const tvApi = {
 
 // api.get("movie/508943/similar");
 // api.get("movie/508943/reviews");
+// api.get("search/tv");
 
 export default api;
