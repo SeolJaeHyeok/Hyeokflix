@@ -13,13 +13,10 @@ export const movieApi = {
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   trending: () => api.get(`trending/movie/week`),
-  similarMovie: (movie_id) => api.get(`movie/${movie_id}/similar`),
-  credits: (movie_id) => api.get(`movie/${movie_id}/credits`),
-  actorInformation: (credit_id) => api.get(`credit/${credit_id}`),
   movieDetail: (movie_id) =>
     api.get(`movie/${movie_id}`, {
       params: {
-        append_to_response: "videos",
+        append_to_response: "videos,credits,similar",
       },
     }),
   search: (term) =>
@@ -35,13 +32,10 @@ export const tvApi = {
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
   trending: () => api.get(`/trending/tv/week`),
-  similarTv: (tv_id) => api.get(`movie/${tv_id}/similar`),
-  credits: (tv_id) => api.get(`tv/${tv_id}/credits`),
-  actorInformation: (credit_id) => api.get(`credit/${credit_id}`),
   showDetail: (tv_id) =>
     api.get(`tv/${tv_id}`, {
       params: {
-        append_to_response: "videos",
+        append_to_response: "videos,credits,similar",
       },
     }),
   search: (term) =>
@@ -50,6 +44,10 @@ export const tvApi = {
         query: encodeURIComponent(term), // params를 query를 요구했는데 term을 정의해줘서 에러 발생!
       },
     }),
+};
+
+export const actorApi = {
+  actorInformation: (credit_id) => api.get(`credit/${credit_id}`),
 };
 
 // export const multiSearchApi = {
