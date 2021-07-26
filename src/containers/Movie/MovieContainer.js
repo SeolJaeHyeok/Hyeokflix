@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import MovieViewer from "components/Movie/MovieViewer";
-import { movieApi } from "lib/api";
+import MovieViewer from "../../components/Movie/MovieViewer";
+import { movieApi } from "../../lib/api";
 
 const MovieContainer = () => {
-  const [nowPlaying, setNowPlaying] = useState(null);
-  const [upComing, setUpComing] = useState(null);
-  const [popular, setPopular] = useState(null);
-  const [trending, setTrending] = useState(null);
-  const [error, setError] = useState(null);
+  const [nowPlaying, setNowPlaying] = useState([]);
+  const [upComing, setUpComing] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [error, setError] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getMovieFromApi = async () => {
@@ -24,7 +24,6 @@ const MovieContainer = () => {
       const {
         data: { results: trending },
       } = await movieApi.trending();
-
       setNowPlaying(nowPlaying);
       setUpComing(upComing);
       setPopular(popular);

@@ -8,6 +8,6 @@ const SearchViewer = ({
   error,
   loading,
   handleSubmit,
-}) => {};
+}) => <div>Search Page</div>;
 
 export default SearchViewer;

@@ -12,7 +12,7 @@ export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
-  trending: () => api.get(`trending/movie/week`),
+  trending: () => api.get("trending/movie/week"),
   movieDetail: (movie_id) =>
     api.get(`movie/${movie_id}`, {
       params: {
@@ -31,7 +31,7 @@ export const tvApi = {
   topRated: () => api.get("tv/top_rated"),
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
-  trending: () => api.get(`/trending/tv/week`),
+  trending: () => api.get("/trending/tv/week"),
   showDetail: (tv_id) =>
     api.get(`tv/${tv_id}`, {
       params: {
@@ -61,7 +61,7 @@ export const actorApi = {
 //     }),
 // };
 
-// api.get("movie/508943/similar");
+// api.get("movie/508943");
 // api.get("movie/508943/reviews");
 // api.get("search/tv");
 
