@@ -8,9 +8,9 @@ import {
 
 import Home from "components/Home/HomeViewer";
 import Movie from "../containers/Movie/index";
-import Tv from "components/Tv/TvViewer";
-import Detail from "components/Detail/DetailViewer";
-import Search from "components/Search/SearchViewer";
+import Tv from "../containers/Tv/index";
+import Detail from "../containers/Detail/index";
+import Search from "../containers/Search/index";
 import Header from "./common/Header";
 
 export default () => (
