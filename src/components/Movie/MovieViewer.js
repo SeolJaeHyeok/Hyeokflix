@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Section from "components/common/Section";
+import Loader from "components/common/Loader";
 
 const MovieViewerBlock = styled.div``;
 
@@ -14,7 +15,7 @@ const MovieViewer = ({
   loading,
 }) =>
   loading ? (
-    "Loading..."
+    <Loader />
   ) : (
     <MovieViewerBlock>
       {trending && trending.length > 0 && (
