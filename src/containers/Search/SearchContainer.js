@@ -9,13 +9,22 @@ const SearchContainer = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (searchTerm !== "") {
       searchByTerm(searchTerm);
     }
+    setSearchTerm("");
   };
 
-  searchByTerm = async () => {
+  const updateTerm = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSearchTerm(value);
+  };
+
+  const searchByTerm = async () => {
     try {
       const {
         data: { results: movieResults },
@@ -34,10 +43,10 @@ const SearchContainer = () => {
       setLoading(false);
     }
   };
-  // useEffect(() => {
-  //   // setLoading(true);
-  //   handleSubmit();
-  // });
+  useEffect(() => {
+    // setLoading(true);
+    // handleSubmit();
+  });
 
   return (
     <SearchViewer
@@ -47,6 +56,7 @@ const SearchContainer = () => {
       error={error}
       loading={loading}
       handleSubmit={handleSubmit}
+      updateTerm={updateTerm}
     />
   );
 };

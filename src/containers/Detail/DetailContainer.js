@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { movieApi, tvApi } from "../../lib/api";
-import { useParams } from "react-router";
+import { useParams, withRouter } from "react-router";
 import DetailViewer from "components/Detail/DetailViewer";
 
-const DetailContainer = ({ location }) => {
+const DetailContainer = ({ location, history }) => {
   const params = useParams();
   const { pathname } = location;
 
@@ -16,7 +16,7 @@ const DetailContainer = ({ location }) => {
     const parsedId = parseInt(params.id);
 
     if (isNaN(parsedId)) {
-      return push("/");
+      return history.push("/");
     }
 
     let result = null;
@@ -42,4 +42,4 @@ const DetailContainer = ({ location }) => {
   return <DetailViewer result={result} error={error} loading={loading} />;
 };
 
-export default DetailContainer;
+export default withRouter(DetailContainer);
