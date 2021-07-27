@@ -21,7 +21,11 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const SearchResultBlock = styled.div``;
+const SearchResultBlock = styled.div`
+  font-size: 28px;
+  color: #f1c40f;
+  margin-bottom: 30px;
+`;
 
 const SearchViewer = ({
   movieResults,
@@ -45,6 +49,9 @@ const SearchViewer = ({
       <Loader />
     ) : (
       <>
+        {pastTerm && movieResults.length > 0 && tvResults.length > 0 && (
+          <SearchResultBlock>{pastTerm}에 대한 검색 결과</SearchResultBlock>
+        )}
         {movieResults && movieResults.length > 0 && (
           <Section title="Movies">
             {movieResults.map((movie) => movie.title)}
@@ -58,7 +65,8 @@ const SearchViewer = ({
       </>
     )}
     {error && <Message color="#e74c3c" text={error} />}
-    {movieResults &&
+    {pastTerm &&
+      movieResults &&
       tvResults &&
       movieResults.length === 0 &&
       tvResults.length === 0 && (
