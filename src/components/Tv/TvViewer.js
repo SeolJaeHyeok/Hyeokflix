@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Loader from "components/common/Loader";
 import Section from "components/common/Section";
+import Message from "components/common/Message";
 
 const TvViewerBlock = styled.div``;
 
@@ -32,6 +33,7 @@ const TvViewer = ({
           {airingToday.map((tv) => tv.name)}
         </Section>
       )}
+      {error && <Message color="#e74c3c" text={error} />}
     </TvViewerBlock>
   );
 

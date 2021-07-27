@@ -1,7 +1,9 @@
-import Loader from "components/common/Loader";
-import Section from "components/common/Section";
 import React from "react";
 import styled from "styled-components";
+
+import Loader from "components/common/Loader";
+import Section from "components/common/Section";
+import Message from "components/common/Message";
 
 const SearchBlock = styled.div`
   margin-top: 50px;
@@ -29,6 +31,7 @@ const SearchViewer = ({
   loading,
   handleSubmit,
   updateTerm,
+  pastTerm,
 }) => (
   <SearchBlock>
     <Form onSubmit={handleSubmit}>
@@ -54,6 +57,16 @@ const SearchViewer = ({
         )}
       </>
     )}
+    {error && <Message color="#e74c3c" text={error} />}
+    {movieResults &&
+      tvResults &&
+      movieResults.length === 0 &&
+      tvResults.length === 0 && (
+        <Message
+          text={`${pastTerm}에 대한 검색 결과를 찾을 수 없습니다.`}
+          color="#95a5a6"
+        />
+      )}
   </SearchBlock>
 );
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Section from "components/common/Section";
 import Loader from "components/common/Loader";
+import Message from "components/common/Message";
 
 const MovieViewerBlock = styled.div``;
 
@@ -36,6 +37,7 @@ const MovieViewer = ({
           {upComing.map((movie) => movie.title)}
         </Section>
       )}
+      {error && <Message color="#e74c3c" text={error} />}
     </MovieViewerBlock>
   );
 

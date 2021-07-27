@@ -21,7 +21,7 @@ export default () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/movie" component={Movie} />
         <Route exact path="/tv" component={Tv} />
-        <Route exact path="/search" exact component={Search} />
+        <Route exact path="/search" component={Search} />
         <Route
           path="/movie/:id"
           render={(props) => <Detail key={props.match.params.id} {...props} />}

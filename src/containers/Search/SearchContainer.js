@@ -5,7 +5,8 @@ import { movieApi, tvApi } from "lib/api";
 const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState([]);
   const [tvResults, setTvResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // TODO: updateTerm 함수 작성
+  const [searchTerm, setSearchTerm] = useState("");
+  const [pastTerm, setPastTerm] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -34,6 +35,7 @@ const SearchContainer = () => {
       } = await tvApi.search(searchTerm);
 
       setLoading(true);
+      setPastTerm(searchTerm);
       setMovieResults(movieResults);
       setTvResults(tvResults);
     } catch (e) {
@@ -57,6 +59,7 @@ const SearchContainer = () => {
       loading={loading}
       handleSubmit={handleSubmit}
       updateTerm={updateTerm}
+      pastTerm={pastTerm}
     />
   );
 };
