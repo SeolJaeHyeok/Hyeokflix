@@ -4,10 +4,12 @@ import styled from "styled-components";
 import Loader from "components/common/Loader";
 import Section from "components/common/Section";
 import Message from "components/common/Message";
+import Poster from "components/common/Poster";
 
 const SearchBlock = styled.div`
   margin-top: 50px;
   text-align: center;
+  padding: 20px;
 `;
 
 const Form = styled.form`
@@ -54,12 +56,32 @@ const SearchViewer = ({
         )}
         {movieResults && movieResults.length > 0 && (
           <Section title="Movies">
-            {movieResults.map((movie) => movie.title)}
+            {movieResults.map((movie) => (
+              <Poster
+                key={movie.id}
+                id={movie.id}
+                imageUrl={movie.poster_path}
+                title={movie.title}
+                rating={movie.vote_average}
+                year={movie.release_date}
+                isMovie={true}
+              />
+            ))}
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
           <Section title="TV Shows">
-            {tvResults.map((show) => show.name)}
+            {tvResults.map((show) => (
+              <Poster
+                key={show.id}
+                id={show.id}
+                imageUrl={show.poster_path}
+                title={show.name}
+                rating={show.vote_average}
+                year={show.first_air_date}
+                isMovie={false}
+              />
+            ))}
           </Section>
         )}
       </>
