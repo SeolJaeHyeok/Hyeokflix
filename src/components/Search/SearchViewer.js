@@ -63,7 +63,7 @@ const SearchViewer = ({
                 imageUrl={movie.poster_path}
                 title={movie.title}
                 rating={movie.vote_average}
-                year={movie.release_date}
+                year={movie.release_date && movie.release_date.substring(0, 4)}
                 isMovie={true}
               />
             ))}
@@ -78,7 +78,9 @@ const SearchViewer = ({
                 imageUrl={show.poster_path}
                 title={show.name}
                 rating={show.vote_average}
-                year={show.first_air_date}
+                year={
+                  show.first_air_date && show.first_air_date.substring(0, 4)
+                }
                 isMovie={false}
               />
             ))}

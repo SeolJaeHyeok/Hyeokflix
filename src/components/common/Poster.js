@@ -38,10 +38,12 @@ const ImageBlock = styled.div`
 
 const Title = styled.span`
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 `;
 
-const Year = styled.span``;
+const Year = styled.span`
+  color: #95a5a6;
+`;
 
 const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => (
   <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
