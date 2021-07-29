@@ -27,7 +27,7 @@ export default () => (
           render={(props) => <Detail key={props.match.params.id} {...props} />}
         />{" "}
         <Route
-          path="/show/:id"
+          path="/tv/:id"
           render={(props) => <Detail key={props.match.params.id} {...props} />}
         />
         <Redirect from="*" to="/" />
