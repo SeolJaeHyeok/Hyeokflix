@@ -51,6 +51,7 @@ const CastItem = styled.div`
   }
 `;
 
+// TODO: 출연진 눌렀을 때 credit_id가지고 해당 출연진 필모그라피 나오게끔
 const Casting = ({ casts }) => {
   return (
     <>

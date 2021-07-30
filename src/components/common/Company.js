@@ -64,14 +64,14 @@ const Company = ({ company }) => {
           <CompaniesBlock>
             {company.map((com) => (
               <CompaniesItem
-                key={company.id}
+                key={com.id}
                 bgUrl={
-                  company.logo_path
-                    ? `https://image.tmdb.org/t/p/w300${company.logo_path}`
+                  com.logo_path
+                    ? `https://image.tmdb.org/t/p/w300${com.logo_path}`
                     : "https://kknd26.ru/images/no-photo-nevinka.png"
                 }
               >
-                <Name>{company.name}</Name>
+                <Name>{com.name}</Name>
               </CompaniesItem>
             ))}
           </CompaniesBlock>

@@ -1,8 +1,12 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, Route, Switch, withRouter } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import Loader from "components/common/Loader";
+import Casting from "components/common/Casting";
+import Country from "components/common/Country";
+import Company from "components/common/Company";
+import Message from "components/common/Message";
 
 const DetailViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -38,13 +42,14 @@ const Backdrop = styled.div`
   filter: blur(3px);
   opacity: 0.5;
   animation-name: ${backdropAnim};
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   z-index: -1;
 `;
 
 const Content = styled.div`
+  font-family: serif;
   display: flex;
   position: relative;
   width: 100%;
@@ -72,7 +77,7 @@ const Cover = styled.div`
   height: 100%;
   border-radius: 5px;
   animation-name: ${showAnim};
-  animation-duration: 3s;
+  animation-duration: 2.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 `;
@@ -81,7 +86,7 @@ const Data = styled.div`
   width: 70%;
   margin-left: 10px;
   animation-name: ${showAnim};
-  animation-duration: 3s;
+  animation-duration: 2.5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 `;
@@ -106,7 +111,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
   width: 70%;
   opacity: 0.7;
@@ -128,7 +133,8 @@ const TabContainer = styled.div`
   width: 100%;
   display: flex;
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
+  left: 30px;
   justify-content: center;
 `;
 
@@ -137,7 +143,7 @@ const Tab = styled(Link)`
   color: ${(props) => (props.current === "true" ? "white" : "#e74c3c")};
   background-color: ${(props) =>
     props.current === "true" ? "#e74c3c" : "transparent"};
-  width: 120px;
+  width: 130px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -207,6 +213,12 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         </Data>
         <TabContainer>
           <Tab
+            current={location.pathname.includes("/similar").toString()}
+            to={match.url + "/similar"}
+          >
+            Similar Content
+          </Tab>
+          <Tab
             current={location.pathname.includes("/video").toString()}
             to={match.url + "/video"}
           >
@@ -216,7 +228,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
             current={location.pathname.includes("/information").toString()}
             to={match.url + "/information"}
           >
-            More
+            Credits
           </Tab>
           {result.original_name && (
             <Tab
@@ -228,6 +240,35 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
           )}
         </TabContainer>
       </Content>
+      <Switch>
+        <Route path={`/movie/:id/information`} exact>
+          {result.credits.cast && result.credits.cast.length > 0 && (
+            <Casting casts={result.credits.cast} />
+          )}
+          {result.production_companies &&
+            result.production_companies.length > 0 && (
+              <Company company={result.production_companies} />
+            )}
+          {result.production_countries &&
+            result.production_countries.length > 0 && (
+              <Country countries={result.production_countries} />
+            )}
+        </Route>
+        <Route path={`/tv/:id/information`} exact>
+          {result.credits.cast && result.credits.length > 0 && (
+            <Casting casts={result.credits.cast} />
+          )}
+          {result.production_companies &&
+            result.production_companies.length > 0 && (
+              <Company company={result.production_companies} />
+            )}
+          {result.production_countries &&
+            result.production_countries.length > 0 && (
+              <Country countries={result.production_countries} />
+            )}
+        </Route>
+      </Switch>
+      {error && <Message color="#e74c3c" text={error} />}
     </DetailViewerBlock>
   );
 };
