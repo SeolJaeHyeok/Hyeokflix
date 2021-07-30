@@ -3,7 +3,7 @@ import { movieApi, tvApi } from "../../lib/api";
 import { useParams, withRouter } from "react-router";
 import DetailViewer from "components/Detail/DetailViewer";
 
-const DetailContainer = ({ location, history }) => {
+const DetailContainer = ({ match, location, history }) => {
   const params = useParams();
   const { pathname } = location;
 
@@ -28,11 +28,11 @@ const DetailContainer = ({ location, history }) => {
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
       }
+      setResult(result);
     } catch {
       setError("데이터를 찾을 수 없습니다.");
     } finally {
       setLoading(false);
-      setResult(result);
     }
   };
 
