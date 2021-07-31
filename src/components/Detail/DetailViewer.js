@@ -7,6 +7,7 @@ import Casting from "components/common/Casting";
 import Country from "components/common/Country";
 import Company from "components/common/Company";
 import Message from "components/common/Message";
+import Video from "components/common/Video";
 
 const DetailViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -241,6 +242,16 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         </TabContainer>
       </Content>
       <Switch>
+        <Route path={`/movie/:id/video`} exact>
+          {result.videos.results.map((videos) => (
+            <Video videos={videos} key={videos.key} />
+          ))}
+        </Route>
+        <Route path={`/tv/:id/video`} exact>
+          {result.videos.results.map((videos) => (
+            <Video videoKey={videos} key={videos.key} />
+          ))}
+        </Route>
         <Route path={`/movie/:id/information`} exact>
           {result.credits.cast && result.credits.cast.length > 0 && (
             <Casting casts={result.credits.cast} />
