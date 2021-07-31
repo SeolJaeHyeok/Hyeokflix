@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Route, Switch, withRouter } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import Slider from "react-slick";
 
 import Loader from "components/common/Loader";
 import Casting from "components/common/Casting";
@@ -8,6 +9,7 @@ import Country from "components/common/Country";
 import Company from "components/common/Company";
 import Message from "components/common/Message";
 import Video from "components/common/Video";
+import Poster from "components/common/Poster";
 
 const DetailViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -163,7 +165,17 @@ const Tab = styled(Link)`
   }
 `;
 
+const SliderBlock = styled.div`
+  margin-top: 30px;
+`;
+
 const DetailViewer = ({ result, error, loading, match, location }) => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  };
   return loading ? (
     <Loader />
   ) : (
@@ -242,15 +254,65 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         </TabContainer>
       </Content>
       <Switch>
+        <Route path={`/movie/:id/similar`} exact>
+          <SliderBlock>
+            <Slider {...settings}>
+              {result.similar.results.map((movie) => (
+                <Poster
+                  key={movie.id}
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  title={movie.original_title}
+                  rating={movie.vote_average}
+                  year={
+                    movie.release_date && movie.release_date.substring(0, 4)
+                  }
+                  isMovie={true}
+                ></Poster>
+              ))}
+            </Slider>
+          </SliderBlock>
+        </Route>
+        <Route path={`/tv/:id/similar`} exact>
+          <SliderBlock>
+            <Slider {...settings}>
+              {result.similar.results.map((show) => (
+                <Poster
+                  key={show.id}
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  title={show.original_title}
+                  rating={show.vote_average}
+                  year={show.release_date && show.release_date.substring(0, 4)}
+                  isMovie={false}
+                ></Poster>
+              ))}
+            </Slider>
+          </SliderBlock>
+        </Route>
         <Route path={`/movie/:id/video`} exact>
-          {result.videos.results.map((videos) => (
-            <Video videos={videos} key={videos.key} />
-          ))}
+          <Slider
+            infinite={true}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+          >
+            {result.videos.results.map((videos) => (
+              <Video videos={videos} key={videos.key} />
+            ))}
+          </Slider>
         </Route>
         <Route path={`/tv/:id/video`} exact>
-          {result.videos.results.map((videos) => (
-            <Video videoKey={videos} key={videos.key} />
-          ))}
+          <Slider
+            infinite={true}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+          >
+            {result.videos.results.map((videos) => (
+              <Video videoKey={videos} key={videos.key} />
+            ))}
+          </Slider>
         </Route>
         <Route path={`/movie/:id/information`} exact>
           {result.credits.cast && result.credits.cast.length > 0 && (
