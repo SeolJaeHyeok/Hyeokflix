@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.div`
@@ -33,7 +34,7 @@ const Name = styled.div`
   transition: 0.3s ease-in-out;
 `;
 
-const CastItem = styled.div`
+const CastItem = styled(Link)`
   background: ${(props) => `url(${props.bgUrl})`};
   background-size: cover;
   background-position: center center;
@@ -56,9 +57,11 @@ const Casting = ({ casts }) => {
   return (
     <>
       <Header>Casting</Header>
+
       <CastBlock>
         {casts.slice(0, 13).map((cast) => (
           <CastItem
+            to={`/person/${cast.id}`}
             key={cast.cast_id}
             bgUrl={
               cast.profile_path

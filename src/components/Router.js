@@ -11,6 +11,7 @@ import Movie from "../containers/Movie/index";
 import Tv from "../containers/Tv/index";
 import Detail from "../containers/Detail/index";
 import Search from "../containers/Search/index";
+import Person from "../containers/Person/index";
 import Header from "./common/Header";
 
 export default () => (
@@ -30,6 +31,7 @@ export default () => (
           path="/tv/:id"
           render={(props) => <Detail key={props.match.params.id} {...props} />}
         />
+        <Route exact path="/person/:id" component={Person} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
