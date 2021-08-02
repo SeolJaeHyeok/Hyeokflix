@@ -1,5 +1,6 @@
 import Loader from "components/common/Loader";
 import Poster from "components/common/Poster";
+import Section from "components/common/Section";
 import React from "react";
 import Slider from "react-slick";
 import styled, { keyframes } from "styled-components";
@@ -129,32 +130,62 @@ const PersonViewer = ({
           <PlaceOfBirth>{result.place_of_birth}</PlaceOfBirth>
           <BiographyTitle>Biography</BiographyTitle>
           <Biography>{result.biography}</Biography>
-          <Title>Movie</Title>
-          <Slider {...settings}>
-            {movieResults.cast.map((movie) => (
-              <Poster
-                id={movie.id}
-                imageUrl={movie.poster_path}
-                title={movie.original_title}
-                rating={movie.vote_average}
-                year={movie.release_date}
-                isMovie={true}
-              />
-            ))}
-          </Slider>
+          <Title>Movies</Title>
+          {movieResults.cast.length > 8 ? (
+            <Slider {...settings}>
+              {movieResults.cast.map((movie) => (
+                <Poster
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  title={movie.original_title}
+                  rating={movie.vote_average}
+                  year={movie.release_date}
+                  isMovie={true}
+                />
+              ))}
+            </Slider>
+          ) : (
+            <Section>
+              {movieResults.cast.map((movie) => (
+                <Poster
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  title={movie.original_title}
+                  rating={movie.vote_average}
+                  year={movie.release_date}
+                  isMovie={true}
+                />
+              ))}
+            </Section>
+          )}
           <Title>TV Shows</Title>
-          <Slider {...settings}>
-            {showResults.cast.map((show) => (
-              <Poster
-                id={show.id}
-                imageUrl={show.poster_path}
-                title={show.original_title}
-                rating={show.vote_average}
-                year={show.release_date}
-                isMovie={true}
-              />
-            ))}
-          </Slider>
+          {showResults.cast.length > 8 ? (
+            <Slider {...settings}>
+              {showResults.cast.map((show) => (
+                <Poster
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  title={show.original_title}
+                  rating={show.vote_average}
+                  year={show.release_date}
+                  isMovie={true}
+                />
+              ))}
+            </Slider>
+          ) : (
+            <Section>
+              {showResults.cast.map((show) => (
+                <Poster
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  title={show.original_title}
+                  rating={show.vote_average}
+                  year={show.release_date}
+                  isMovie={true}
+                />
+              ))}
+            </Section>
+          )}
         </Data>
       </Content>
     </PersonViewerBlock>
