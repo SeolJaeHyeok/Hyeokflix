@@ -46,8 +46,10 @@ export const tvApi = {
     }),
 };
 
-export const actorApi = {
-  actorInformation: (credit_id) => api.get(`credit/${credit_id}`),
+export const personApi = {
+  personInformation: (person_id) => api.get(`person/${person_id}`),
+  personMovies: (person_id) => api.get(`person/${person_id}/movie_credits`),
+  personShows: (person_id) => api.get(`person/${person_id}/tv_credits`),
 };
 
 export const multiSearchApi = {
