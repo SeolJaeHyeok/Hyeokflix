@@ -23,8 +23,8 @@ const TvViewer = ({
   ) : (
     <TvViewerBlock>
       {trending && trending.length > 0 && (
-        <Section title="Trending">
-          {trending.map((tv) => (
+        <Section title="Trending Series">
+          {trending.slice(0, 18).map((tv) => (
             <Poster
               key={tv.id}
               id={tv.id}
@@ -38,8 +38,8 @@ const TvViewer = ({
         </Section>
       )}
       {topRated && topRated.length > 0 && (
-        <Section title="Top Rated">
-          {topRated.map((tv) => (
+        <Section title="Top Rated Series">
+          {topRated.slice(0, 18).map((tv) => (
             <Poster
               key={tv.id}
               id={tv.id}
@@ -53,8 +53,8 @@ const TvViewer = ({
         </Section>
       )}
       {popular && popular.length > 0 && (
-        <Section title="Popular">
-          {popular.map((tv) => (
+        <Section title="Popular Series">
+          {popular.slice(0, 18).map((tv) => (
             <Poster
               key={tv.id}
               id={tv.id}
@@ -68,8 +68,8 @@ const TvViewer = ({
         </Section>
       )}
       {airingToday && airingToday.length > 0 && (
-        <Section title="Airing Today">
-          {airingToday.map((tv) => (
+        <Section title="Airing Today Series">
+          {airingToday.slice(0, 18).map((tv) => (
             <Poster
               key={tv.id}
               id={tv.id}

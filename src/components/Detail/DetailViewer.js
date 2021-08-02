@@ -10,6 +10,7 @@ import Company from "components/common/Company";
 import Message from "components/common/Message";
 import Video from "components/common/Video";
 import Poster from "components/common/Poster";
+import Section from "components/common/Section";
 
 const DetailViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -107,10 +108,12 @@ const MovieInfoContainer = styled.div`
 
 const MovieInfomation = styled.span`
   font-size: 16px;
+  padding: 3px;
 `;
 
 const Divider = styled.span`
-  margin: 0 10px;
+  margin: 0 1px;
+  padding: 3px;
 `;
 
 const Overview = styled.p`
@@ -121,7 +124,7 @@ const Overview = styled.p`
 `;
 
 const IMDB = styled.a`
-  margin-left: 10px;
+  margin-left: 5px;
   width: 40px;
   height: 25px;
 `;
@@ -165,26 +168,18 @@ const Tab = styled(Link)`
   }
 `;
 
-const SliderBlock = styled.div`
-  margin-top: 30px;
-`;
-
-const PosterBlock = styled.div`
-  margin-bottom: 30px;
+const SectionBlock = styled.div`
+  margin-top: 50px;
 `;
 
 const DetailViewer = ({ result, error, loading, match, location }) => {
-  const similarSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-  };
   const videoSettings = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
   return loading ? (
     <Loader />
@@ -239,7 +234,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
             current={location.pathname.includes("/similar").toString()}
             to={match.url + "/similar"}
           >
-            Similar Content
+            Similar
           </Tab>
           <Tab
             current={location.pathname.includes("/video").toString()}
@@ -265,46 +260,40 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
       </Content>
       <Switch>
         <Route path={`/movie/:id/similar`} exact>
-          <SliderBlock>
-            <Slider {...similarSettings}>
-              {result.similar.results.map((movie) => (
-                <PosterBlock>
-                  <Poster
-                    key={movie.id}
-                    id={movie.id}
-                    imageUrl={movie.poster_path}
-                    title={movie.original_title}
-                    rating={movie.vote_average}
-                    year={
-                      movie.release_date && movie.release_date.substring(0, 4)
-                    }
-                    isMovie={true}
-                  />
-                </PosterBlock>
+          <SectionBlock>
+            <Section title={`${result.original_title}와 비슷한 영화`}>
+              {result.similar.results.slice(0, 18).map((movie) => (
+                <Poster
+                  key={movie.id}
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  title={movie.original_title}
+                  rating={movie.vote_average}
+                  year={
+                    movie.release_date && movie.release_date.substring(0, 4)
+                  }
+                  isMovie={true}
+                />
               ))}
-            </Slider>
-          </SliderBlock>
+            </Section>
+          </SectionBlock>
         </Route>
         <Route path={`/tv/:id/similar`} exact>
-          <SliderBlock>
-            <Slider {...similarSettings}>
-              {result.similar.results.map((show) => (
-                <PosterBlock>
-                  <Poster
-                    key={show.id}
-                    id={show.id}
-                    imageUrl={show.poster_path}
-                    title={show.original_title}
-                    rating={show.vote_average}
-                    year={
-                      show.release_date && show.release_date.substring(0, 4)
-                    }
-                    isMovie={false}
-                  />
-                </PosterBlock>
+          <SectionBlock>
+            <Section title={`${result.original_name}와 비슷한 영화`}>
+              {result.similar.results.slice(0, 18).map((show) => (
+                <Poster
+                  key={show.id}
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  title={show.original_title}
+                  rating={show.vote_average}
+                  year={show.release_date && show.release_date.substring(0, 4)}
+                  isMovie={false}
+                />
               ))}
-            </Slider>
-          </SliderBlock>
+            </Section>
+          </SectionBlock>
         </Route>
         <Route path={`/movie/:id/video`} exact>
           <Slider {...videoSettings}>

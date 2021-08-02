@@ -23,8 +23,8 @@ const MovieViewer = ({
   ) : (
     <MovieViewerBlock>
       {trending && trending.length > 0 && (
-        <Section title="Trending">
-          {trending.map((movie) => (
+        <Section title="Trending Movies">
+          {trending.slice(0, 18).map((movie) => (
             <Poster
               key={movie.id}
               id={movie.id}
@@ -38,8 +38,8 @@ const MovieViewer = ({
         </Section>
       )}
       {nowPlaying && nowPlaying.length > 0 && (
-        <Section title="Now Playing">
-          {nowPlaying.map((movie) => (
+        <Section title="Now Playing Movies">
+          {nowPlaying.slice(0, 18).map((movie) => (
             <Poster
               key={movie.id}
               id={movie.id}
@@ -53,8 +53,8 @@ const MovieViewer = ({
         </Section>
       )}
       {popular && popular.length > 0 && (
-        <Section title="Popular">
-          {popular.map((movie) => (
+        <Section title="Popular Movies">
+          {popular.slice(0, 18).map((movie) => (
             <Poster
               key={movie.id}
               id={movie.id}
@@ -68,8 +68,8 @@ const MovieViewer = ({
         </Section>
       )}
       {upComing && upComing.length > 0 && (
-        <Section title="Upcoming">
-          {upComing.map((movie) => (
+        <Section title="Upcoming Movies">
+          {upComing.slice(0, 18).map((movie) => (
             <Poster
               key={movie.id}
               id={movie.id}

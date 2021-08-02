@@ -5,6 +5,7 @@ const SectionBlock = styled.div`
   :not(:last-child) {
     margin-bottom: 50px;
   }
+  text-align: center;
 `;
 
 const Title = styled.span`
