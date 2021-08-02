@@ -50,19 +50,20 @@ export const actorApi = {
   actorInformation: (credit_id) => api.get(`credit/${credit_id}`),
 };
 
-// export const multiSearchApi = {
-//   multiSearch: (term) =>
-//     api.get("search/multi", {
-//       params: {
-//         query: term,
-//         include_adult: true,
-//         page: 1,
-//       },
-//     }),
-// };
+export const multiSearchApi = {
+  multiSearch: (term) =>
+    api.get("search/multi", {
+      params: {
+        query: term,
+        include_adult: true,
+        page: 1,
+      },
+    }),
+};
 
 // api.get("movie/508943");
 // api.get("movie/508943/reviews");
 // api.get("search/tv");
+// console.log(multiSearchApi.multiSearch("코드"));
 
 export default api;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchViewer from "components/Search/SearchViewer";
-import { movieApi, tvApi } from "lib/api";
+import { movieApi, multiSearchApi, tvApi } from "lib/api";
 
 const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState([]);
@@ -9,6 +9,7 @@ const SearchContainer = () => {
   const [pastTerm, setPastTerm] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,11 +34,15 @@ const SearchContainer = () => {
       const {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm);
+      const {
+        data: { results: result },
+      } = await multiSearchApi.multiSearch(searchTerm);
 
-      setLoading(true);
       setPastTerm(searchTerm);
+      setLoading(true);
       setMovieResults(movieResults);
       setTvResults(tvResults);
+      setResult(result);
     } catch (e) {
       setError("검색 결과를 찾을 수 없습니다.");
       console.log(e);
@@ -46,12 +51,12 @@ const SearchContainer = () => {
     }
   };
   useEffect(() => {
-    // setLoading(true);
-    // handleSubmit();
-  });
+    setLoading(false);
+  }, []);
 
   return (
     <SearchViewer
+      result={result}
       movieResults={movieResults}
       tvResults={tvResults}
       searchTerm={searchTerm}

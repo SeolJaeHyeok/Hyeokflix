@@ -30,6 +30,7 @@ const SearchResultBlock = styled.div`
 `;
 
 const SearchViewer = ({
+  result,
   movieResults,
   tvResults,
   searchTerm,
@@ -86,12 +87,28 @@ const SearchViewer = ({
             ))}
           </Section>
         )}
+        {result && result.length > 0 && (
+          <Section title="검색 결과">
+            {result.map((res) => (
+              <Poster
+                key={res.id}
+                id={res.id}
+                imageUrl={res.poster_path}
+                title={res.title}
+                rating={res.vote_average}
+                year={res.release_date && res.release_date.substring(0, 4)}
+                isMovie={true}
+              />
+            ))}
+          </Section>
+        )}
       </>
     )}
     {error && <Message color="#e74c3c" text={error} />}
     {pastTerm &&
       movieResults &&
       tvResults &&
+      result &&
       movieResults.length === 0 &&
       tvResults.length === 0 && (
         <Message
