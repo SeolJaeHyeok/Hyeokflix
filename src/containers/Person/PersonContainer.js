@@ -9,6 +9,8 @@ const PersonContainer = () => {
   const parsedId = parseInt(params.id); // Person ID
 
   const [result, setResults] = useState([]);
+  const [movieResults, setMovieResults] = useState([]);
+  const [showResults, setShowResults] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,8 +20,8 @@ const PersonContainer = () => {
       const { data: movieResults } = await personApi.personMovies(parsedId);
       const { data: showResults } = await personApi.personShows(parsedId);
       setResults(result);
-      setResults(movieResults);
-      setResults(showResults);
+      setMovieResults(movieResults);
+      setShowResults(showResults);
     } catch (error) {
       setError(error);
     } finally {
@@ -31,7 +33,15 @@ const PersonContainer = () => {
     getPersonFromApi();
   }, []);
 
-  return <PersonViewer result={result} error={error} loading={loading} />;
+  return (
+    <PersonViewer
+      result={result}
+      movieResults={movieResults}
+      showResults={showResults}
+      error={error}
+      loading={loading}
+    />
+  );
 };
 
 export default PersonContainer;
