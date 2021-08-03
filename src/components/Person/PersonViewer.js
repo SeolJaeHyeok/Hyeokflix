@@ -1,9 +1,11 @@
-import Loader from "components/common/Loader";
-import Poster from "components/common/Poster";
-import Section from "components/common/Section";
 import React from "react";
 import Slider from "react-slick";
 import styled, { keyframes } from "styled-components";
+
+import Message from "components/common/Message";
+import Loader from "components/common/Loader";
+import Poster from "components/common/Poster";
+import Section from "components/common/Section";
 
 const PersonViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -188,6 +190,7 @@ const PersonViewer = ({
           )}
         </Data>
       </Content>
+      {error && <Message color="#e74c3c" text={error} />}
     </PersonViewerBlock>
   );
 };
