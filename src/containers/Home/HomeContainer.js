@@ -1,8 +1,35 @@
+import React, { useEffect, useState } from "react";
 import HomeViewer from "components/Home/HomeViewer";
-import React from "react";
+import { movieApi } from "lib/api";
 
 const HomeContainer = () => {
-  return <HomeViewer />;
+  const [content, setContent] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getContentFromApi = async () => {
+    try {
+      const {
+        data: { results: nowPlaying },
+      } = await movieApi.nowPlaying();
+      const {
+        data: { results: trending },
+      } = await movieApi.trending();
+      setContent({ nowPlaying: nowPlaying });
+      setContent({ trending: trending });
+    } catch (e) {
+      setError("해당 정보를 찾을 수 없습니다.");
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getContentFromApi();
+  }, []);
+
+  return <HomeViewer content={content} error={error} loading={loading} />;
 };
 
 export default HomeContainer;

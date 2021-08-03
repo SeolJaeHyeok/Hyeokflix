@@ -22,8 +22,9 @@ const PersonContainer = () => {
       setResults(result);
       setMovieResults(movieResults);
       setShowResults(showResults);
-    } catch (error) {
-      setError(error);
+    } catch (e) {
+      setError("인물 정보를 찾을 수 없습니다.");
+      console.log(e);
     } finally {
       setLoading(false);
     }
