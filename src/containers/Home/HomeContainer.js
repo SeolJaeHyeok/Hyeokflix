@@ -3,7 +3,8 @@ import HomeViewer from "components/Home/HomeViewer";
 import { movieApi, trendingApi } from "lib/api";
 
 const HomeContainer = () => {
-  const [content, setContent] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
+  const [trending, setTrending] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,8 +16,8 @@ const HomeContainer = () => {
       const {
         data: { results: trending },
       } = await trendingApi.trending("all");
-      setContent({ nowPlaying: nowPlaying });
-      setContent({ trending: trending });
+      setNowPlaying(nowPlaying);
+      setTrending(trending);
     } catch (e) {
       setError("해당 정보를 찾을 수 없습니다.");
       console.log(e);
@@ -24,12 +25,18 @@ const HomeContainer = () => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     getContentFromApi();
   }, []);
 
-  return <HomeViewer content={content} error={error} loading={loading} />;
+  return (
+    <HomeViewer
+      nowPlaying={nowPlaying}
+      trending={trending}
+      error={error}
+      loading={loading}
+    />
+  );
 };
 
 export default HomeContainer;
