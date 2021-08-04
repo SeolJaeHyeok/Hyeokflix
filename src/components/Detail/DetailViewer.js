@@ -2,6 +2,8 @@ import React from "react";
 import { Link, Route, Switch, withRouter } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Slider from "react-slick";
+import { withBaseIcon } from "react-icons-kit";
+import { link } from "react-icons-kit/icomoon/link";
 
 import Loader from "components/common/Loader";
 import Casting from "components/common/Casting";
@@ -11,6 +13,8 @@ import Message from "components/common/Message";
 import Video from "components/common/Video";
 import Poster from "components/common/Poster";
 import Section from "components/common/Section";
+
+const IconBlock = withBaseIcon({ size: 20, style: { color: "Yellow" } });
 
 const DetailViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -97,30 +101,27 @@ const Data = styled.div`
 
 const Title = styled.h3`
   font-size: 32px;
+  margin-bottom: 10px;
 `;
 
-const MovieInfoContainer = styled.div`
-  margin: 40px 0px;
-  display: flex;
-  justify-content: start;
-  align-content: center;
-`;
-
-const MovieInfomation = styled.span`
+const ReleaseDate = styled.div`
   font-size: 16px;
-  padding: 3px;
+  margin-top: 5px;
 `;
 
-const Divider = styled.span`
-  margin: 0 1px;
-  padding: 3px;
+const Runtime = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+`;
+
+const Genre = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
 `;
 
 const Rating = styled.div`
-  position: absolute;
-  bottom: 10px;
-  right: 5px;
-  opacity: 0;
+  font-size: 16px;
+  margin: 5px 0px;
 `;
 
 const Overview = styled.p`
@@ -130,16 +131,14 @@ const Overview = styled.p`
   opacity: 0.7;
 `;
 
+const IMDBBlock = styled.span`
+  margin-left: 10px;
+`;
+
 const IMDB = styled.a`
   margin-left: 5px;
   width: 40px;
   height: 25px;
-`;
-
-const IMDBImg = styled.img`
-  margin: 0;
-  width: 40px;
-  height: 20px;
 `;
 
 const TabContainer = styled.div`
@@ -208,38 +207,41 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
             {result.original_title
               ? result.original_title
               : result.original_name}
+            <IMDBBlock>
+              {result.imdb_id ? (
+                <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                  <IconBlock icon={link} />
+                </IMDB>
+              ) : null}
+            </IMDBBlock>
           </Title>
-          <MovieInfoContainer>
-            <MovieInfomation>
-              {result.release_date
-                ? result.release_date.substring(0, 4)
-                : result.first_air_date.substring(0, 4)}
-            </MovieInfomation>
-            <Divider>•</Divider>
-            <MovieInfomation>
-              {result.runtime ? result.runtime : result.episode_run_time}min
-            </MovieInfomation>
-            <Divider>•</Divider>
-            <MovieInfomation>
-              {result.genres &&
-                result.genres.map((genre, index) =>
-                  index === result.genres.length - 1
-                    ? genre.name
-                    : `${genre.name}/`
-                )}
-            </MovieInfomation>
-            {result.imdb_id ? (
-              <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
-                <IMDBImg src="https://www.fixinthemix.com/wp-content/uploads/2015/08/IMDb.png"></IMDBImg>
-              </IMDB>
-            ) : null}
-            <Rating>
-              <span role="img" aria-label="Rating">
-                ⭐️
-              </span>{" "}
-              {result.vote_average}/10
-            </Rating>
-          </MovieInfoContainer>
+
+          <ReleaseDate>
+            Date :{" "}
+            {result.release_date
+              ? result.release_date.substring(0, 4)
+              : result.first_air_date.substring(0, 4)}
+          </ReleaseDate>
+          <Runtime>
+            Runtime :{" "}
+            {result.runtime ? result.runtime : result.episode_run_time}
+            min
+          </Runtime>
+          <Genre>
+            Genre :{" "}
+            {result.genres &&
+              result.genres.map((genre, index) =>
+                index === result.genres.length - 1
+                  ? genre.name
+                  : `${genre.name}/`
+              )}
+          </Genre>
+          <Rating>
+            <span role="img" aria-label="Rating">
+              ⭐️
+            </span>{" "}
+            {result.vote_average}/10
+          </Rating>
           <Overview>{result.overview}</Overview>
         </Data>
         <TabContainer>
