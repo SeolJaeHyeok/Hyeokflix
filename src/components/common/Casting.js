@@ -49,6 +49,7 @@ const CastItem = styled(Link)`
     ${Name} {
       opacity: 1;
     }
+    transform: scale(1.1, 1.1);
   }
 `;
 

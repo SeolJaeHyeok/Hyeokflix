@@ -52,6 +52,7 @@ const CompaniesItem = styled.div`
     ${Name} {
       opacity: 1;
     }
+    transform: scale(1.1, 1.1);
   }
 `;
 
