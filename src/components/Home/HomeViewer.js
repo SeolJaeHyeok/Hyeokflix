@@ -24,6 +24,7 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
       <Section>
         {nowPlaying.map((now) => (
           <Poster
+            key={now.id}
             id={now.id}
             imageUrl={now.poster_path}
             title={now.original_title ? now.original_title : now.original_name}
