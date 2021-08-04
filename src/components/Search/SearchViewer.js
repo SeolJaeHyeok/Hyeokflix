@@ -63,7 +63,6 @@ const SearchViewer = ({
                 id={movie.id}
                 imageUrl={movie.poster_path}
                 title={movie.title}
-                rating={movie.vote_average}
                 year={movie.release_date && movie.release_date.substring(0, 4)}
                 isMovie={true}
               />
@@ -78,7 +77,6 @@ const SearchViewer = ({
                 id={show.id}
                 imageUrl={show.poster_path}
                 title={show.name}
-                rating={show.vote_average}
                 year={
                   show.first_air_date && show.first_air_date.substring(0, 4)
                 }
@@ -95,7 +93,6 @@ const SearchViewer = ({
                 id={res.id}
                 imageUrl={res.poster_path}
                 title={res.title}
-                rating={res.vote_average}
                 year={res.release_date && res.release_date.substring(0, 4)}
                 isMovie={true}
               />

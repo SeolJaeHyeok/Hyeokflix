@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PosterBlock = styled.div`
   font-size: 12px;
   &:hover {
-    transform: scale(1.2, 1.2);
+    transform: scale(1.05, 1.05);
   }
 `;
 
@@ -18,22 +18,12 @@ const Image = styled.div`
   transition: opacity 0.1s linear;
 `;
 
-const Rating = styled.span`
-  position: absolute;
-  bottom: 10px;
-  right: 5px;
-  opacity: 0;
-`;
-
 const ImageBlock = styled.div`
   margin-bottom: 5px;
   position: relative;
   &:hover {
     ${Image} {
       opacity: 0.3;
-    }
-    ${Rating} {
-      opacity: 1;
     }
   }
   transition: opacity 0.1s linear;
@@ -48,7 +38,7 @@ const Year = styled.span`
   color: #95a5a6;
 `;
 
-const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => (
+const Poster = ({ id, imageUrl, title, year, isMovie }) => (
   <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
     <PosterBlock>
       <ImageBlock>
@@ -59,12 +49,6 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => (
               : "https://kknd26.ru/images/no-photo-nevinka.png"
           }
         ></Image>
-        <Rating>
-          <span role="img" aria-label="Rating">
-            ⭐️
-          </span>{" "}
-          {rating}/10
-        </Rating>
       </ImageBlock>
       <Title>{title}</Title>
       <Year>{year}</Year>

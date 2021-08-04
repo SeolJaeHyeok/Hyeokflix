@@ -30,7 +30,6 @@ const MovieViewer = ({
               id={movie.id}
               imageUrl={movie.poster_path}
               title={movie.original_title}
-              rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
               isMovie={true}
             />
@@ -45,7 +44,6 @@ const MovieViewer = ({
               id={movie.id}
               imageUrl={movie.poster_path}
               title={movie.original_title}
-              rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
               isMovie={true}
             />
@@ -60,7 +58,6 @@ const MovieViewer = ({
               id={movie.id}
               imageUrl={movie.poster_path}
               title={movie.original_title}
-              rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
               isMovie={true}
             />
@@ -75,7 +72,6 @@ const MovieViewer = ({
               id={movie.id}
               imageUrl={movie.poster_path}
               title={movie.original_title}
-              rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
               isMovie={true}
             />

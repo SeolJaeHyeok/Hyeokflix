@@ -116,6 +116,13 @@ const Divider = styled.span`
   padding: 3px;
 `;
 
+const Rating = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  opacity: 0;
+`;
+
 const Overview = styled.p`
   font-size: 16px;
   line-height: 1.5;
@@ -226,6 +233,12 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
                 <IMDBImg src="https://www.fixinthemix.com/wp-content/uploads/2015/08/IMDb.png"></IMDBImg>
               </IMDB>
             ) : null}
+            <Rating>
+              <span role="img" aria-label="Rating">
+                ⭐️
+              </span>{" "}
+              {result.vote_average}/10
+            </Rating>
           </MovieInfoContainer>
           <Overview>{result.overview}</Overview>
         </Data>
@@ -268,7 +281,6 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
                   id={movie.id}
                   imageUrl={movie.poster_path}
                   title={movie.original_title}
-                  rating={movie.vote_average}
                   year={
                     movie.release_date && movie.release_date.substring(0, 4)
                   }
@@ -287,7 +299,6 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
                   id={show.id}
                   imageUrl={show.poster_path}
                   title={show.original_title}
-                  rating={show.vote_average}
                   year={show.release_date && show.release_date.substring(0, 4)}
                   isMovie={false}
                 />

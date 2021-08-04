@@ -110,8 +110,8 @@ const PersonViewer = ({
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 8,
+    slidesToShow: 6,
+    slidesToScroll: 6,
   };
   return loading ? (
     <Loader />
@@ -140,7 +140,6 @@ const PersonViewer = ({
                   id={movie.id}
                   imageUrl={movie.poster_path}
                   title={movie.original_title}
-                  rating={movie.vote_average}
                   year={movie.release_date}
                   isMovie={true}
                 />
