@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 const PosterBlock = styled.div`
   font-size: 12px;
+  &:hover {
+    transform: scale(1.2, 1.2);
+  }
 `;
 
 const Image = styled.div`

@@ -12,7 +12,6 @@ export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
-  trending: () => api.get("trending/movie/week"),
   movieDetail: (movie_id) =>
     api.get(`movie/${movie_id}`, {
       params: {
@@ -31,7 +30,6 @@ export const tvApi = {
   topRated: () => api.get("tv/top_rated"),
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
-  trending: () => api.get("/trending/tv/week"),
   showDetail: (tv_id) =>
     api.get(`tv/${tv_id}`, {
       params: {
@@ -44,6 +42,10 @@ export const tvApi = {
         query: encodeURIComponent(term), // params를 query를 요구했는데 term을 정의해줘서 에러 발생!
       },
     }),
+};
+
+export const trendingApi = {
+  trending: (category) => api.get(`trending/${category}/week`),
 };
 
 export const personApi = {

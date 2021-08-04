@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieViewer from "../../components/Movie/MovieViewer";
-import { movieApi } from "../../lib/api";
+import { movieApi, trendingApi } from "../../lib/api";
 
 const MovieContainer = () => {
   const [nowPlaying, setNowPlaying] = useState([]);
@@ -23,7 +23,7 @@ const MovieContainer = () => {
       } = await movieApi.popular();
       const {
         data: { results: trending },
-      } = await movieApi.trending();
+      } = await trendingApi.trending("movie");
       setNowPlaying(nowPlaying);
       setUpComing(upComing);
       setPopular(popular);

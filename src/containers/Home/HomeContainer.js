@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HomeViewer from "components/Home/HomeViewer";
-import { movieApi } from "lib/api";
+import { movieApi, trendingApi } from "lib/api";
 
 const HomeContainer = () => {
   const [content, setContent] = useState([]);
@@ -14,7 +14,7 @@ const HomeContainer = () => {
       } = await movieApi.nowPlaying();
       const {
         data: { results: trending },
-      } = await movieApi.trending();
+      } = await trendingApi.trending("all");
       setContent({ nowPlaying: nowPlaying });
       setContent({ trending: trending });
     } catch (e) {

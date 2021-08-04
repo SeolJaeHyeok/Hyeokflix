@@ -1,5 +1,5 @@
 import TvViewer from "components/Tv/TvViewer";
-import { tvApi } from "lib/api";
+import { trendingApi, tvApi } from "lib/api";
 import React, { useState } from "react";
 
 const TvContainer = () => {
@@ -23,7 +23,7 @@ const TvContainer = () => {
       } = await tvApi.airingToday();
       const {
         data: { results: trending },
-      } = await tvApi.trending();
+      } = await trendingApi.trending("tv");
 
       setTopRated(topRated);
       setPopular(popular);
