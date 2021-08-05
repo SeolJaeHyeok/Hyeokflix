@@ -28,7 +28,6 @@ const Video = ({ videos }) => {
         height="400"
         allowFullScreen
       />
-      ;
     </VideoBlock>
   ) : (
     <Message text="관련 클립이 존재하지 않습니다." color="#95a5a6" />

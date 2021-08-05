@@ -101,27 +101,41 @@ const Data = styled.div`
 
 const Title = styled.h3`
   font-size: 32px;
-  margin-bottom: 10px;
 `;
 
 const ReleaseDate = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 5px;
 `;
 
 const Runtime = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 5px;
+`;
+
+const GenreContainer = styled.div`
+  margin-top: 0.1rem;
+  margin-bottom: 0.8rem;
+  display: flex;
 `;
 
 const Genre = styled.div`
-  font-size: 16px;
-  margin-top: 5px;
+  width: fit-content;
+  padding: 5px 10px;
+  background: #7f8c8d;
+  color: white;
+  margin-right: 10px;
+  border-radius: 3px;
 `;
 
 const Rating = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin: 5px 0px;
+`;
+
+const OverviewContainer = styled.div`
+  font-size: 22px;
+  margin-top: 1.125rem;
 `;
 
 const Overview = styled.p`
@@ -129,6 +143,7 @@ const Overview = styled.p`
   line-height: 1.5;
   width: 70%;
   opacity: 0.7;
+  margin-top: 0.2rem;
 `;
 
 const IMDBBlock = styled.span`
@@ -136,9 +151,8 @@ const IMDBBlock = styled.span`
 `;
 
 const IMDB = styled.a`
-  margin-left: 5px;
   width: 40px;
-  height: 25px;
+  height: 20px;
 `;
 
 const TabContainer = styled.div`
@@ -213,34 +227,26 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
               ) : null}
             </IMDBBlock>
           </Title>
-
+          <GenreContainer>
+            {result.genres &&
+              result.genres.map((genre) => <Genre>{genre.name}</Genre>)}
+          </GenreContainer>
           <ReleaseDate>
-            Date :{" "}
+            Date -{" "}
             {result.release_date
               ? result.release_date.substring(0, 4)
               : result.first_air_date.substring(0, 4)}
           </ReleaseDate>
           <Runtime>
-            Runtime :{" "}
+            Runtime -{" "}
             {result.runtime ? result.runtime : result.episode_run_time}
             min
           </Runtime>
-          <Genre>
-            Genre :{" "}
-            {result.genres &&
-              result.genres.map((genre, index) =>
-                index === result.genres.length - 1
-                  ? genre.name
-                  : `${genre.name}/`
-              )}
-          </Genre>
-          <Rating>
-            <span role="img" aria-label="Rating">
-              ⭐️
-            </span>{" "}
-            {result.vote_average}/10
-          </Rating>
-          <Overview>{result.overview}</Overview>
+          <Rating>Rating - {result.vote_average}/10</Rating>
+          <OverviewContainer>
+            Overview
+            <Overview>{result.overview}</Overview>
+          </OverviewContainer>
         </Data>
         <TabContainer>
           <Tab
