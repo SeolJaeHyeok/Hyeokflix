@@ -6,11 +6,11 @@ import { withBaseIcon } from "react-icons-kit";
 import { link } from "react-icons-kit/icomoon/link";
 
 import Loader from "components/common/Loader";
-import Casting from "components/common/Casting";
-import Country from "components/common/Country";
-import Company from "components/common/Company";
+import Casting from "components/Detail/Casting";
+import Country from "components/Detail/Country";
+import Company from "components/Detail/Company";
 import Message from "components/common/Message";
-import Video from "components/common/Video";
+import Video from "components/Detail/Video";
 import Poster from "components/common/Poster";
 import Section from "components/common/Section";
 

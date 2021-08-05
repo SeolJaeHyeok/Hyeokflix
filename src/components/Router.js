@@ -6,12 +6,12 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Home from "../containers/Home/index";
-import Movie from "../containers/Movie/index";
-import Tv from "../containers/Tv/index";
-import Detail from "../containers/Detail/index";
-import Search from "../containers/Search/index";
-import Person from "../containers/Person/index";
+import Home from "../pages/HomePage";
+import Movie from "../pages/MoviePage";
+import Tv from "../pages/TvPage";
+import Detail from "../pages/DetailPage";
+import Search from "../pages/SearchPage";
+import Person from "../pages/PersonPage";
 import Header from "./common/Header";
 
 export default () => (

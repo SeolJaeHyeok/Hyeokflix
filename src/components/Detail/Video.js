@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Message from "./Message";
+import Message from "../common/Message";
 
 const VideoBlock = styled.div`
   margin-top: 30px;

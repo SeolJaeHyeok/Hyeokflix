@@ -1,4 +1,4 @@
-import HomeSlider from "components/common/HomeSlider";
+import HomeSlider from "components/Home/HomeSlider";
 import Loader from "components/common/Loader";
 import Message from "components/common/Message";
 import Poster from "components/common/Poster";
@@ -61,7 +61,6 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
           ))}
         </Slider>
       </SliderContainer>
-
       {error && <Message color="#e74c3c" text={error} />}
     </HomeViewerBlock>
   );

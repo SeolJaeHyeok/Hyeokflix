@@ -25,6 +25,7 @@ const HomeContainer = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     getContentFromApi();
   }, []);
