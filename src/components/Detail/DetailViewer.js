@@ -17,7 +17,7 @@ import Section from "components/common/Section";
 const IconBlock = withBaseIcon({ size: 20, style: { color: "Yellow" } });
 
 const DetailViewerBlock = styled.div`
-  height: calc(100vh - 50px);
+  height: calc(100vh - 20px);
   width: 100%;
   position: relative;
   padding: 50px;

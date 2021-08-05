@@ -8,7 +8,7 @@ import Poster from "components/common/Poster";
 import Section from "components/common/Section";
 
 const PersonViewerBlock = styled.div`
-  height: calc(100vh - 50px);
+  height: 100%;
   width: 100%;
   position: relative;
   padding: 50px;
@@ -112,6 +112,7 @@ const PersonViewer = ({
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
+    adaptiveHeight: true,
   };
   return loading ? (
     <Loader />
