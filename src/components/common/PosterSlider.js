@@ -55,7 +55,7 @@ const Button = styled(Link)`
   font-size: 20px;
 `;
 
-const HomeSlider = ({ nowPlaying, isMovie }) => {
+const PosterSlider = ({ nowPlaying, isMovie }) => {
   const carousel = useRef();
   const [handler, setHandler] = useState(null);
   const settings = {
@@ -122,4 +122,4 @@ const HomeSlider = ({ nowPlaying, isMovie }) => {
   );
 };
 
-export default HomeSlider;
+export default PosterSlider;

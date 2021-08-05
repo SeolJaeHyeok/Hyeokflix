@@ -5,11 +5,13 @@ const SectionBlock = styled.div`
   :not(:last-child) {
     margin-bottom: 50px;
   }
-  text-align: center;
+  /* text-align: center; */
+  margin-top: 20px;
+  margin-left: 25px;
 `;
 
 const Title = styled.span`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
 `;
 
@@ -17,7 +19,7 @@ const Grid = styled.div`
   margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 125px);
-  grid-gap: 25px;
+  grid-gap: 30px;
 `;
 
 const Section = ({ title, children }) => (

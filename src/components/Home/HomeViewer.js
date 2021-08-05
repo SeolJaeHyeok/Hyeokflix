@@ -1,10 +1,11 @@
-import HomeSlider from "components/Home/HomeSlider";
-import Loader from "components/common/Loader";
-import Message from "components/common/Message";
-import Poster from "components/common/Poster";
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+
+import PosterSlider from "components/common/PosterSlider";
+import Loader from "components/common/Loader";
+import Message from "components/common/Message";
+import Poster from "components/common/Poster";
 
 const HomeViewerBlock = styled.div`
   height: calc(100vh - 50px);
@@ -41,7 +42,7 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
     <HomeViewerBlock>
       <Content>
         {nowPlaying && nowPlaying.length > 0 && (
-          <HomeSlider nowPlaying={nowPlaying} isMovie={true} />
+          <PosterSlider nowPlaying={nowPlaying} isMovie={true} />
         )}
         <TrendingTitle>{"지난주 인기 컨텐츠"}</TrendingTitle>
         <SliderContainer>

@@ -5,9 +5,10 @@ import Section from "components/common/Section";
 import Loader from "components/common/Loader";
 import Message from "components/common/Message";
 import Poster from "components/common/Poster";
+import PosterSlider from "components/common/PosterSlider";
 
 const MovieViewerBlock = styled.div`
-  padding: 20px;
+  padding: 0px;
 `;
 
 const MovieViewer = ({
@@ -22,6 +23,9 @@ const MovieViewer = ({
     <Loader />
   ) : (
     <MovieViewerBlock>
+      {nowPlaying && nowPlaying.length > 0 && (
+        <PosterSlider nowPlaying={nowPlaying} isMovie={true} />
+      )}
       {trending && trending.length > 0 && (
         <Section title="Trending Movies">
           {trending.slice(0, 18).map((movie) => (
