@@ -100,6 +100,10 @@ const Title = styled.div`
   font-size: 24px;
 `;
 
+const Divider = styled.div`
+  padding: 20px;
+`;
+
 const PersonViewer = ({
   result,
   movieResults,
@@ -110,8 +114,8 @@ const PersonViewer = ({
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     adaptiveHeight: true,
   };
   return loading ? (
@@ -162,6 +166,7 @@ const PersonViewer = ({
               ))}
             </Section>
           )}
+          <Divider />
           <Title>TV Shows</Title>
           {showResults.cast.length > 8 ? (
             <Slider {...settings}>

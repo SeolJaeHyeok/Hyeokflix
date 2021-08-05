@@ -283,7 +283,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         <Route path={`/movie/:id/similar`} exact>
           <SectionBlock>
             <Section title={`${result.original_title}와 비슷한 영화`}>
-              {result.similar.results.slice(0, 18).map((movie) => (
+              {result.similar.results.map((movie) => (
                 <Poster
                   key={movie.id}
                   id={movie.id}
@@ -301,7 +301,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         <Route path={`/show/:id/similar`} exact>
           <SectionBlock>
             <Section title={`${result.original_name}와 비슷한 영화`}>
-              {result.similar.results.slice(0, 18).map((show) => (
+              {result.similar.results.map((show) => (
                 <Poster
                   key={show.id}
                   id={show.id}
