@@ -71,8 +71,8 @@ const Header = ({ location: { pathname } }) => (
       <HeaderItem current={pathname === "/movie"}>
         <SLink to="/movie">Movies</SLink>
       </HeaderItem>
-      <HeaderItem current={pathname === "/tv"}>
-        <SLink to="/tv">TV</SLink>
+      <HeaderItem current={pathname === "/show"}>
+        <SLink to="/show">TV</SLink>
       </HeaderItem>
       <RightHeader>
         <SLink to="/search">

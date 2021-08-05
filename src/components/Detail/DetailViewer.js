@@ -298,7 +298,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
             </Section>
           </SectionBlock>
         </Route>
-        <Route path={`/tv/:id/similar`} exact>
+        <Route path={`/show/:id/similar`} exact>
           <SectionBlock>
             <Section title={`${result.original_name}와 비슷한 영화`}>
               {result.similar.results.slice(0, 18).map((show) => (
@@ -321,7 +321,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
             ))}
           </Slider>
         </Route>
-        <Route path={`/tv/:id/video`} exact>
+        <Route path={`/show/:id/video`} exact>
           <Slider {...videoSettings}>
             {result.videos.results.map((videos) => (
               <Video videoKey={videos} key={videos.key} />
@@ -330,24 +330,33 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
         </Route>
         <Route path={`/movie/:id/information`} exact>
           {result.credits.cast && result.credits.cast.length > 0 && (
-            <Casting casts={result.credits.cast} />
+            <Casting casts={result.credits.cast} key={result.credits.cast.id} />
           )}
           {result.production_companies &&
             result.production_companies.length > 0 && (
-              <Company company={result.production_companies} />
+              <Company
+                company={result.production_companies}
+                key={result.production_companies.id}
+              />
             )}
           {result.production_countries &&
             result.production_countries.length > 0 && (
-              <Country countries={result.production_countries} />
+              <Country
+                countries={result.production_countries}
+                key={result.production_countries.id}
+              />
             )}
         </Route>
-        <Route path={`/tv/:id/information`} exact>
+        <Route path={`/show/:id/information`} exact>
           {result.credits.cast && result.credits.length > 0 && (
-            <Casting casts={result.credits.cast} />
+            <Casting casts={result.credits.cast} key={result.credits.cast.id} />
           )}
           {result.production_companies &&
             result.production_companies.length > 0 && (
-              <Company company={result.production_companies} />
+              <Company
+                company={result.production_companies}
+                key={result.production_companies.id}
+              />
             )}
           {result.production_countries &&
             result.production_countries.length > 0 && (

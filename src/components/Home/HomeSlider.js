@@ -110,7 +110,7 @@ const HomeSlider = ({ nowPlaying, isMovie }) => {
                 <Title>
                   {isMovie ? now.original_title : now.original_name}
                 </Title>
-                <Button to={isMovie ? `movie/${now.id}` : `tv/${now.id}`}>
+                <Button to={isMovie ? `movie/${now.id}` : `show/${now.id}`}>
                   More
                 </Button>
               </Info>

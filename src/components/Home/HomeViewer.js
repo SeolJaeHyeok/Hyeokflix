@@ -14,6 +14,8 @@ const HomeViewerBlock = styled.div`
   padding: 0px;
 `;
 
+const Content = styled.div``;
+
 const TrendingTitle = styled.div`
   font-size: 24px;
   text-align: center;
@@ -37,31 +39,33 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
     <Loader />
   ) : (
     <HomeViewerBlock>
-      {nowPlaying && nowPlaying.length > 0 && (
-        <HomeSlider nowPlaying={nowPlaying} isMovie={true} />
-      )}
-      <TrendingTitle>{"지난주 인기 컨텐츠"}</TrendingTitle>
-      <SliderContainer>
-        <Slider {...settings}>
-          {trending.map((trend) => (
-            <Poster
-              key={trend.id}
-              id={trend.id}
-              imageUrl={trend.poster_path}
-              title={
-                trend.original_title
-                  ? trend.original_title
-                  : trend.original_name
-              }
-              year={
-                trend.release_date ? trend.release_date : trend.first_air_date
-              }
-              isMovie={trend.original_title ? true : false}
-            />
-          ))}
-        </Slider>
-      </SliderContainer>
-      {error && <Message color="#e74c3c" text={error} />}
+      <Content>
+        {nowPlaying && nowPlaying.length > 0 && (
+          <HomeSlider nowPlaying={nowPlaying} isMovie={true} />
+        )}
+        <TrendingTitle>{"지난주 인기 컨텐츠"}</TrendingTitle>
+        <SliderContainer>
+          <Slider {...settings}>
+            {trending.map((trend) => (
+              <Poster
+                key={trend.id}
+                id={trend.id}
+                imageUrl={trend.poster_path}
+                title={
+                  trend.original_title
+                    ? trend.original_title
+                    : trend.original_name
+                }
+                year={
+                  trend.release_date ? trend.release_date : trend.first_air_date
+                }
+                isMovie={trend.original_title ? true : false}
+              />
+            ))}
+          </Slider>
+        </SliderContainer>
+        {error && <Message color="#e74c3c" text={error} />}
+      </Content>
     </HomeViewerBlock>
   );
 };

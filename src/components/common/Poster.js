@@ -61,7 +61,7 @@ const Year = styled.span`
 `;
 
 const Poster = ({ id, imageUrl, title, year, isMovie }) => (
-  <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
+  <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
     <PosterBlock>
       <ImageBlock>
         <Image

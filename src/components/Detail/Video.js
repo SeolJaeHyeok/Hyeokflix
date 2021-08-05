@@ -27,6 +27,7 @@ const Video = ({ videos }) => {
         width="600"
         height="400"
         allowFullScreen
+        title={`${videos.key}`}
       />
     </VideoBlock>
   ) : (

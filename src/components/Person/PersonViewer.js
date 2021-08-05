@@ -138,6 +138,7 @@ const PersonViewer = ({
             <Slider {...settings}>
               {movieResults.cast.map((movie) => (
                 <Poster
+                  key={movie.id}
                   id={movie.id}
                   imageUrl={movie.poster_path}
                   title={movie.original_title}
@@ -150,6 +151,7 @@ const PersonViewer = ({
             <Section>
               {movieResults.cast.map((movie) => (
                 <Poster
+                  key={movie.id}
                   id={movie.id}
                   imageUrl={movie.poster_path}
                   title={movie.original_title}
@@ -165,6 +167,7 @@ const PersonViewer = ({
             <Slider {...settings}>
               {showResults.cast.map((show) => (
                 <Poster
+                  key={show.id}
                   id={show.id}
                   imageUrl={show.poster_path}
                   title={show.original_title}
@@ -178,6 +181,7 @@ const PersonViewer = ({
             <Section>
               {showResults.cast.map((show) => (
                 <Poster
+                  key={show.id}
                   id={show.id}
                   imageUrl={show.poster_path}
                   title={show.original_title}

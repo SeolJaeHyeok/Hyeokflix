@@ -21,14 +21,14 @@ export default () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/movie" component={Movie} />
-        <Route exact path="/tv" component={Tv} />
+        <Route exact path="/show" component={Tv} />
         <Route exact path="/search" component={Search} />
         <Route
           path="/movie/:id"
           render={(props) => <Detail key={props.match.params.id} {...props} />}
-        />{" "}
+        />
         <Route
-          path="/tv/:id"
+          path="/show/:id"
           render={(props) => <Detail key={props.match.params.id} {...props} />}
         />
         <Route exact path="/person/:id" component={Person} />
