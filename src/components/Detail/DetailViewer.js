@@ -169,7 +169,7 @@ const Tab = styled(Link)`
   color: ${(props) => (props.current === "true" ? "white" : "#e74c3c")};
   background-color: ${(props) =>
     props.current === "true" ? "#e74c3c" : "transparent"};
-  width: 130px;
+  width: 100px;
   height: 40px;
   display: flex;
   justify-content: center;

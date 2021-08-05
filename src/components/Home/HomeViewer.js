@@ -2,7 +2,6 @@ import HomeSlider from "components/common/HomeSlider";
 import Loader from "components/common/Loader";
 import Message from "components/common/Message";
 import Poster from "components/common/Poster";
-import Section from "components/common/Section";
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
@@ -30,8 +29,8 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 8,
+    slidesToShow: 10,
+    slidesToScroll: 10,
     adaptiveHeight: true,
   };
   return loading ? (

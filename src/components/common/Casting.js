@@ -45,11 +45,34 @@ const CastItem = styled(Link)`
   justify-content: center;
   align-items: center;
   color: white;
+
+  @keyframes rotateImage {
+    0% {
+      transform: rotate(0) translateY(0) scale(1);
+    }
+    10% {
+      transform: rotate(0) translateY(0) scale(1);
+    }
+    33% {
+      transform: rotate(-3deg) translateY(-2%) scale(1.03);
+    }
+
+    66% {
+      transform: rotate(3deg) translateY(-2%) scale(1.03);
+    }
+    90% {
+      transform: rotate(0) translateY(0) scale(1);
+    }
+    100% {
+      transform: rotate(0) translateY(0) scale(1);
+    }
+  }
   &:hover {
     ${Name} {
       opacity: 1;
     }
     transform: scale(1.1, 1.1);
+    animation: rotateImage 1s linear infinite;
   }
 `;
 

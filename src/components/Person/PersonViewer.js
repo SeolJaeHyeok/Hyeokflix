@@ -110,8 +110,8 @@ const PersonViewer = ({
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     adaptiveHeight: true,
   };
   return loading ? (

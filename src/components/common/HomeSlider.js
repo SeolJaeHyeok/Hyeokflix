@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonNext,
-  ButtonBack,
-} from "pure-react-carousel";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { Link } from "react-router-dom";
 
@@ -15,6 +9,7 @@ const HomeSliderBlock = styled.div`
   height: 100%;
   display: flex;
   position: relative;
+  box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
 `;
 
 const Backdrop = styled.div`
@@ -26,7 +21,6 @@ const Backdrop = styled.div`
   height: 100%;
   background: url(${(props) => props.bgUrl});
   background-size: cover;
-
   opacity: 0.8;
 `;
 
@@ -99,6 +93,7 @@ const HomeSlider = ({ nowPlaying, isMovie }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <CarouselProvider {...settings}>
       <Slider>
