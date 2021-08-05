@@ -1,3 +1,4 @@
+import HomeSlider from "components/common/HomeSlider";
 import Loader from "components/common/Loader";
 import Message from "components/common/Message";
 import Poster from "components/common/Poster";
@@ -11,16 +12,17 @@ const HomeViewerBlock = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 50px;
+  padding: 0px;
 `;
 
 const TrendingTitle = styled.div`
   font-size: 24px;
   text-align: center;
-  margin-bottom: 1.125rem;
+  margin-top: 1.125rem;
 `;
 
 const SliderContainer = styled.div`
+  padding: 30px;
   margin-bottom: 1.125rem;
 `;
 
@@ -36,18 +38,9 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
     <Loader />
   ) : (
     <HomeViewerBlock>
-      <Section>
-        {nowPlaying.map((now) => (
-          <Poster
-            key={now.id}
-            id={now.id}
-            imageUrl={now.poster_path}
-            title={now.original_title ? now.original_title : now.original_name}
-            year={now.release_date ? now.release_date : now.first_air_date}
-            isMovie={now.original_title ? true : false}
-          />
-        ))}
-      </Section>
+      {nowPlaying && nowPlaying.length > 0 && (
+        <HomeSlider nowPlaying={nowPlaying} isMovie={true} />
+      )}
       <TrendingTitle>{"지난주 인기 컨텐츠"}</TrendingTitle>
       <SliderContainer>
         <Slider {...settings}>
@@ -69,6 +62,7 @@ const HomeViewer = ({ nowPlaying, trending, error, loading }) => {
           ))}
         </Slider>
       </SliderContainer>
+
       {error && <Message color="#e74c3c" text={error} />}
     </HomeViewerBlock>
   );
