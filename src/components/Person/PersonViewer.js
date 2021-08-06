@@ -7,12 +7,6 @@ import Message from "components/common/Message";
 import Loader from "components/common/Loader";
 import Poster from "components/common/Poster";
 import Section from "components/common/Section";
-const PersonViewerBlock = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  padding: 50px;
-`;
 
 const Content = styled.div`
   font-family: serif;
@@ -36,7 +30,6 @@ const showAnim = keyframes`
 `;
 
 const Cover = styled.div`
-  /* position: sticky; */
   width: 30%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
@@ -102,6 +95,42 @@ const Title = styled.div`
 
 const Divider = styled.div`
   padding: 20px;
+`;
+
+const PersonViewerBlock = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 50px;
+  @media (max-width: 768px) {
+    height: 100vh;
+    ${Cover} {
+      width: 40%;
+    }
+    ${Data} {
+      width: 60%;
+    }
+  }
+  @media (max-width: 640px) {
+    height: unset;
+    margin: 0px;
+    padding: 20px;
+    ${Content} {
+      flex-direction: column;
+    }
+    ${Cover} {
+      width: 100%;
+      height: calc(100vh - 100px);
+      position: relative;
+    }
+    ${Data} {
+      width: 100%;
+      top: 120px;
+    }
+    ${BiographyTitle} {
+      font-size: 1.4rem;
+    }
+  }
 `;
 
 const PersonViewer = ({
