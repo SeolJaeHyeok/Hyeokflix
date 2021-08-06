@@ -1,12 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
 import styled, { keyframes } from "styled-components";
+import { Helmet } from "react-helmet";
 
 import Message from "components/common/Message";
 import Loader from "components/common/Loader";
 import Poster from "components/common/Poster";
 import Section from "components/common/Section";
-
 const PersonViewerBlock = styled.div`
   height: 100%;
   width: 100%;
@@ -118,89 +118,96 @@ const PersonViewer = ({
     slidesToScroll: 6,
     adaptiveHeight: true,
   };
-  return loading ? (
-    <Loader />
-  ) : (
-    <PersonViewerBlock>
-      <Content>
-        <Cover
-          bgImage={
-            result.profile_path
-              ? `https://image.tmdb.org/t/p/original${result.profile_path}`
-              : "https://kknd26.ru/images/no-photo-nevinka.png"
-          }
-        />
-        <Data>
-          <Name>{result.name}</Name>
-          <Department>{result.known_for_department}</Department>
-          <Birthday>{result.birthday}</Birthday>
-          <PlaceOfBirth>{result.place_of_birth}</PlaceOfBirth>
-          <BiographyTitle>Biography</BiographyTitle>
-          <Biography>{result.biography}</Biography>
-          <Title>Movies</Title>
-          {movieResults.cast.length > 8 ? (
-            <Slider {...settings}>
-              {movieResults.cast.map((movie) => (
-                <Poster
-                  key={movie.id}
-                  id={movie.id}
-                  imageUrl={movie.poster_path}
-                  title={movie.original_title}
-                  year={movie.release_date}
-                  isMovie={true}
-                />
-              ))}
-            </Slider>
-          ) : (
-            <Section>
-              {movieResults.cast.map((movie) => (
-                <Poster
-                  key={movie.id}
-                  id={movie.id}
-                  imageUrl={movie.poster_path}
-                  title={movie.original_title}
-                  rating={movie.vote_average}
-                  year={movie.release_date}
-                  isMovie={true}
-                />
-              ))}
-            </Section>
-          )}
-          <Divider />
-          <Title>TV Shows</Title>
-          {showResults.cast.length > 8 ? (
-            <Slider {...settings}>
-              {showResults.cast.map((show) => (
-                <Poster
-                  key={show.id}
-                  id={show.id}
-                  imageUrl={show.poster_path}
-                  title={show.original_title}
-                  rating={show.vote_average}
-                  year={show.release_date}
-                  isMovie={true}
-                />
-              ))}
-            </Slider>
-          ) : (
-            <Section>
-              {showResults.cast.map((show) => (
-                <Poster
-                  key={show.id}
-                  id={show.id}
-                  imageUrl={show.poster_path}
-                  title={show.original_title}
-                  rating={show.vote_average}
-                  year={show.release_date}
-                  isMovie={true}
-                />
-              ))}
-            </Section>
-          )}
-        </Data>
-      </Content>
-      {error && <Message color="#e74c3c" text={error} />}
-    </PersonViewerBlock>
+  return (
+    <>
+      <Helmet>
+        <title> {result.name ? result.name : "Unknwon"} | Hyeokflix</title>
+      </Helmet>
+      {loading ? (
+        <Loader />
+      ) : (
+        <PersonViewerBlock>
+          <Content>
+            <Cover
+              bgImage={
+                result.profile_path
+                  ? `https://image.tmdb.org/t/p/original${result.profile_path}`
+                  : "https://kknd26.ru/images/no-photo-nevinka.png"
+              }
+            />
+            <Data>
+              <Name>{result.name}</Name>
+              <Department>{result.known_for_department}</Department>
+              <Birthday>{result.birthday}</Birthday>
+              <PlaceOfBirth>{result.place_of_birth}</PlaceOfBirth>
+              <BiographyTitle>Biography</BiographyTitle>
+              <Biography>{result.biography}</Biography>
+              <Title>Movies</Title>
+              {movieResults.cast.length > 8 ? (
+                <Slider {...settings}>
+                  {movieResults.cast.map((movie) => (
+                    <Poster
+                      key={movie.id}
+                      id={movie.id}
+                      imageUrl={movie.poster_path}
+                      title={movie.original_title}
+                      year={movie.release_date}
+                      isMovie={true}
+                    />
+                  ))}
+                </Slider>
+              ) : (
+                <Section>
+                  {movieResults.cast.map((movie) => (
+                    <Poster
+                      key={movie.id}
+                      id={movie.id}
+                      imageUrl={movie.poster_path}
+                      title={movie.original_title}
+                      rating={movie.vote_average}
+                      year={movie.release_date}
+                      isMovie={true}
+                    />
+                  ))}
+                </Section>
+              )}
+              <Divider />
+              <Title>TV Shows</Title>
+              {showResults.cast.length > 8 ? (
+                <Slider {...settings}>
+                  {showResults.cast.map((show) => (
+                    <Poster
+                      key={show.id}
+                      id={show.id}
+                      imageUrl={show.poster_path}
+                      title={show.original_title}
+                      rating={show.vote_average}
+                      year={show.release_date}
+                      isMovie={true}
+                    />
+                  ))}
+                </Slider>
+              ) : (
+                <Section>
+                  {showResults.cast.map((show) => (
+                    <Poster
+                      key={show.id}
+                      id={show.id}
+                      imageUrl={show.poster_path}
+                      title={show.original_title}
+                      rating={show.vote_average}
+                      year={show.release_date}
+                      isMovie={true}
+                    />
+                  ))}
+                </Section>
+              )}
+            </Data>
+          </Content>
+          {error && <Message color="#e74c3c" text={error} />}
+        </PersonViewerBlock>
+      )}
+    </>
   );
 };
 

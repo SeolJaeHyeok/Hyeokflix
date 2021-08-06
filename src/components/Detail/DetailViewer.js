@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Slider from "react-slick";
 import { withBaseIcon } from "react-icons-kit";
 import { link } from "react-icons-kit/icomoon/link";
+import { Helmet } from "react-helmet";
 
 import Loader from "components/common/Loader";
 import Casting from "components/Detail/Casting";
@@ -201,171 +202,190 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
     autoplay: true,
     autoplaySpeed: 5000,
   };
-  return loading ? (
-    <Loader />
-  ) : (
-    <DetailViewerBlock>
-      <Backdrop
-        bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
-      />
-      <Content>
-        <Cover
-          bgImage={
-            result.poster_path
-              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : "https://kknd26.ru/images/no-photo-nevinka.png"
-          }
-        />
-        <Data>
-          <Title>
-            {result.original_title
-              ? result.original_title
-              : result.original_name}
-            <IMDBBlock>
-              {result.imdb_id ? (
-                <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
-                  <IconBlock icon={link} />
-                </IMDB>
-              ) : null}
-            </IMDBBlock>
-          </Title>
-          <GenreContainer>
-            {result.genres &&
-              result.genres.map((genre) => <Genre>{genre.name}</Genre>)}
-          </GenreContainer>
-          <ReleaseDate>
-            Date -{" "}
-            {result.release_date
-              ? result.release_date.substring(0, 4)
-              : result.first_air_date.substring(0, 4)}
-          </ReleaseDate>
-          <Runtime>
-            Runtime -{" "}
-            {result.runtime ? result.runtime : result.episode_run_time}
-            min
-          </Runtime>
-          <Rating>Rating - {result.vote_average}/10</Rating>
-          <OverviewContainer>
-            Overview
-            <Overview>{result.overview}</Overview>
-          </OverviewContainer>
-        </Data>
-        <TabContainer>
-          <Tab
-            current={location.pathname.includes("/similar").toString()}
-            to={match.url + "/similar"}
-          >
-            Similar
-          </Tab>
-          <Tab
-            current={location.pathname.includes("/video").toString()}
-            to={match.url + "/video"}
-          >
-            Trailer
-          </Tab>
-          <Tab
-            current={location.pathname.includes("/information").toString()}
-            to={match.url + "/information"}
-          >
-            Credits
-          </Tab>
-          {result.original_name && (
-            <Tab
-              current={location.pathname.includes("/series").toString()}
-              to={match.url + "/series"}
-            >
-              Series
-            </Tab>
-          )}
-        </TabContainer>
-      </Content>
-      <Switch>
-        <Route path={`/movie/:id/similar`} exact>
-          <SectionBlock>
-            <Section title={`${result.original_title}와 비슷한 영화`}>
-              {result.similar.results.map((movie) => (
-                <Poster
-                  key={movie.id}
-                  id={movie.id}
-                  imageUrl={movie.poster_path}
-                  title={movie.original_title}
-                  year={
-                    movie.release_date && movie.release_date.substring(0, 4)
-                  }
-                  isMovie={true}
+  return (
+    <>
+      <Helmet>
+        <title>Detail | Hyeokflix</title>
+        {/* <title>
+          {result.original_title ? result.original_title : result.original_name}{" "}
+          | Hyeokflix
+        </title> */}
+      </Helmet>
+      {loading ? (
+        <Loader />
+      ) : (
+        <DetailViewerBlock>
+          <Backdrop
+            bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
+          />
+          <Content>
+            <Cover
+              bgImage={
+                result.poster_path
+                  ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                  : "https://kknd26.ru/images/no-photo-nevinka.png"
+              }
+            />
+            <Data>
+              <Title>
+                {result.original_title
+                  ? result.original_title
+                  : result.original_name}
+                <IMDBBlock>
+                  {result.imdb_id ? (
+                    <IMDB href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                      <IconBlock icon={link} />
+                    </IMDB>
+                  ) : null}
+                </IMDBBlock>
+              </Title>
+              <GenreContainer>
+                {result.genres &&
+                  result.genres.map((genre) => <Genre>{genre.name}</Genre>)}
+              </GenreContainer>
+              <ReleaseDate>
+                Date -{" "}
+                {result.release_date
+                  ? result.release_date.substring(0, 4)
+                  : result.first_air_date.substring(0, 4)}
+              </ReleaseDate>
+              <Runtime>
+                Runtime -{" "}
+                {result.runtime ? result.runtime : result.episode_run_time}
+                min
+              </Runtime>
+              <Rating>Rating - {result.vote_average}/10</Rating>
+              <OverviewContainer>
+                Overview
+                <Overview>{result.overview}</Overview>
+              </OverviewContainer>
+            </Data>
+            <TabContainer>
+              <Tab
+                current={location.pathname.includes("/similar").toString()}
+                to={match.url + "/similar"}
+              >
+                Similar
+              </Tab>
+              <Tab
+                current={location.pathname.includes("/video").toString()}
+                to={match.url + "/video"}
+              >
+                Trailer
+              </Tab>
+              <Tab
+                current={location.pathname.includes("/information").toString()}
+                to={match.url + "/information"}
+              >
+                Credits
+              </Tab>
+              {result.original_name && (
+                <Tab
+                  current={location.pathname.includes("/series").toString()}
+                  to={match.url + "/series"}
+                >
+                  Series
+                </Tab>
+              )}
+            </TabContainer>
+          </Content>
+          <Switch>
+            <Route path={`/movie/:id/similar`} exact>
+              <SectionBlock>
+                <Section title={`${result.original_title}와 비슷한 영화`}>
+                  {result.similar.results.map((movie) => (
+                    <Poster
+                      key={movie.id}
+                      id={movie.id}
+                      imageUrl={movie.poster_path}
+                      title={movie.original_title}
+                      year={
+                        movie.release_date && movie.release_date.substring(0, 4)
+                      }
+                      isMovie={true}
+                    />
+                  ))}
+                </Section>
+              </SectionBlock>
+            </Route>
+            <Route path={`/show/:id/similar`} exact>
+              <SectionBlock>
+                <Section title={`${result.original_name}와 비슷한 영화`}>
+                  {result.similar.results.map((show) => (
+                    <Poster
+                      key={show.id}
+                      id={show.id}
+                      imageUrl={show.poster_path}
+                      title={show.original_title}
+                      year={
+                        show.release_date && show.release_date.substring(0, 4)
+                      }
+                      isMovie={false}
+                    />
+                  ))}
+                </Section>
+              </SectionBlock>
+            </Route>
+            <Route path={`/movie/:id/video`} exact>
+              <Slider {...videoSettings}>
+                {result.videos.results.map((videos) => (
+                  <Video videos={videos} key={videos.key} />
+                ))}
+              </Slider>
+            </Route>
+            <Route path={`/show/:id/video`} exact>
+              <Slider {...videoSettings}>
+                {result.videos.results.map((videos) => (
+                  <Video videoKey={videos} key={videos.key} />
+                ))}
+              </Slider>
+            </Route>
+            <Route path={`/movie/:id/information`} exact>
+              {result.credits.cast && result.credits.cast.length > 0 && (
+                <Casting
+                  casts={result.credits.cast}
+                  key={result.credits.cast.id}
                 />
-              ))}
-            </Section>
-          </SectionBlock>
-        </Route>
-        <Route path={`/show/:id/similar`} exact>
-          <SectionBlock>
-            <Section title={`${result.original_name}와 비슷한 영화`}>
-              {result.similar.results.map((show) => (
-                <Poster
-                  key={show.id}
-                  id={show.id}
-                  imageUrl={show.poster_path}
-                  title={show.original_title}
-                  year={show.release_date && show.release_date.substring(0, 4)}
-                  isMovie={false}
+              )}
+              {result.production_companies &&
+                result.production_companies.length > 0 && (
+                  <Company
+                    company={result.production_companies}
+                    key={result.production_companies.id}
+                  />
+                )}
+              {result.production_countries &&
+                result.production_countries.length > 0 && (
+                  <Country
+                    countries={result.production_countries}
+                    key={result.production_countries.id}
+                  />
+                )}
+            </Route>
+            <Route path={`/show/:id/information`} exact>
+              {result.credits.cast && result.credits.length > 0 && (
+                <Casting
+                  casts={result.credits.cast}
+                  key={result.credits.cast.id}
                 />
-              ))}
-            </Section>
-          </SectionBlock>
-        </Route>
-        <Route path={`/movie/:id/video`} exact>
-          <Slider {...videoSettings}>
-            {result.videos.results.map((videos) => (
-              <Video videos={videos} key={videos.key} />
-            ))}
-          </Slider>
-        </Route>
-        <Route path={`/show/:id/video`} exact>
-          <Slider {...videoSettings}>
-            {result.videos.results.map((videos) => (
-              <Video videoKey={videos} key={videos.key} />
-            ))}
-          </Slider>
-        </Route>
-        <Route path={`/movie/:id/information`} exact>
-          {result.credits.cast && result.credits.cast.length > 0 && (
-            <Casting casts={result.credits.cast} key={result.credits.cast.id} />
-          )}
-          {result.production_companies &&
-            result.production_companies.length > 0 && (
-              <Company
-                company={result.production_companies}
-                key={result.production_companies.id}
-              />
-            )}
-          {result.production_countries &&
-            result.production_countries.length > 0 && (
-              <Country
-                countries={result.production_countries}
-                key={result.production_countries.id}
-              />
-            )}
-        </Route>
-        <Route path={`/show/:id/information`} exact>
-          {result.credits.cast && result.credits.length > 0 && (
-            <Casting casts={result.credits.cast} key={result.credits.cast.id} />
-          )}
-          {result.production_companies &&
-            result.production_companies.length > 0 && (
-              <Company
-                company={result.production_companies}
-                key={result.production_companies.id}
-              />
-            )}
-          {result.production_countries &&
-            result.production_countries.length > 0 && (
-              <Country countries={result.production_countries} />
-            )}
-        </Route>
-      </Switch>
-      {error && <Message color="#e74c3c" text={error} />}
-    </DetailViewerBlock>
+              )}
+              {result.production_companies &&
+                result.production_companies.length > 0 && (
+                  <Company
+                    company={result.production_companies}
+                    key={result.production_companies.id}
+                  />
+                )}
+              {result.production_countries &&
+                result.production_countries.length > 0 && (
+                  <Country countries={result.production_countries} />
+                )}
+            </Route>
+          </Switch>
+          {error && <Message color="#e74c3c" text={error} />}
+        </DetailViewerBlock>
+      )}
+    </>
   );
 };
 

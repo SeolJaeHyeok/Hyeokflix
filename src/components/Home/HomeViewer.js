@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 import Loader from "components/common/Loader";
 import Message from "components/common/Message";
@@ -25,33 +26,42 @@ const HomeViewer = ({ trending, error, loading }) => {
     slidesToShow: 10,
     slidesToScroll: 10,
   };
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <>
-      <Background {...trending} />
-      <SliderContainer>
-        <TrendingTitle>지난주 인기 컨텐츠</TrendingTitle>
-        <Slider {...settings}>
-          {trending.map((trend) => (
-            <Poster
-              key={trend.id}
-              id={trend.id}
-              imageUrl={trend.poster_path}
-              title={
-                trend.original_title
-                  ? trend.original_title
-                  : trend.original_name
-              }
-              year={
-                trend.release_date ? trend.release_date : trend.first_air_date
-              }
-              isMovie={trend.original_title ? true : false}
-            />
-          ))}
-        </Slider>
-      </SliderContainer>
-      {error && <Message color="#e74c3c" text={error} />}
+      <Helmet>
+        <title>Home | Hyeokflix</title>
+      </Helmet>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Background {...trending} />
+          <SliderContainer>
+            <TrendingTitle>지난주 인기 컨텐츠</TrendingTitle>
+            <Slider {...settings}>
+              {trending.map((trend) => (
+                <Poster
+                  key={trend.id}
+                  id={trend.id}
+                  imageUrl={trend.poster_path}
+                  title={
+                    trend.original_title
+                      ? trend.original_title
+                      : trend.original_name
+                  }
+                  year={
+                    trend.release_date
+                      ? trend.release_date
+                      : trend.first_air_date
+                  }
+                  isMovie={trend.original_title ? true : false}
+                />
+              ))}
+            </Slider>
+          </SliderContainer>
+          {error && <Message color="#e74c3c" text={error} />}
+        </>
+      )}
     </>
   );
 };
