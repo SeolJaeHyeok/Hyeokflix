@@ -17,13 +17,6 @@ import Section from "components/common/Section";
 
 const IconBlock = withBaseIcon({ size: 20, style: { color: "Yellow" } });
 
-const DetailViewerBlock = styled.div`
-  height: calc(100vh - 20px);
-  width: 100%;
-  position: relative;
-  padding: 50px;
-`;
-
 const backdropAnim = keyframes`
     0% {
         opacity: 1;
@@ -104,6 +97,8 @@ const Title = styled.h3`
   font-size: 32px;
 `;
 
+const ItemContainer = styled.div``;
+
 const ReleaseDate = styled.div`
   font-size: 18px;
   margin-top: 5px;
@@ -170,7 +165,7 @@ const Tab = styled(Link)`
   color: ${(props) => (props.current === "true" ? "white" : "#e74c3c")};
   background-color: ${(props) =>
     props.current === "true" ? "#e74c3c" : "transparent"};
-  width: 100px;
+  width: 150px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -193,14 +188,68 @@ const SectionBlock = styled.div`
   margin-top: 50px;
 `;
 
+const DetailViewerBlock = styled.div`
+  height: calc(100vh - 20px);
+  width: 100%;
+  position: relative;
+  padding: 50px;
+  @media (max-width: 768px) {
+    height: 100vh;
+    ${Cover} {
+      width: 40%;
+    }
+    ${Data} {
+      width: 60%;
+    }
+  }
+  @media (max-width: 640px) {
+    height: unset;
+    margin: 0px;
+    padding: 20px;
+    ${Content} {
+      flex-direction: column;
+    }
+    ${Cover} {
+      width: 100%;
+      height: calc(100vh - 150px);
+    }
+    ${Data} {
+      width: 100%;
+    }
+    ${Title} {
+      margin-top: 20px;
+      font-size: 1.4rem;
+    }
+    ${ItemContainer} {
+      margin: 5px 0;
+      font-size: 1rem;
+    }
+    ${Overview} {
+      width: 100%;
+    }
+    ${TabContainer} {
+      position: relative;
+      left: 50px;
+      bottom: 0px;
+      display: flex;
+      justify-content: left;
+      width: 100%;
+    }
+    ${Tab} {
+      width: 100px;
+    }
+    ${Genre} {
+      height: fit-content;
+    }
+  }
+`;
+
 const DetailViewer = ({ result, error, loading, match, location }) => {
   const videoSettings = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
   };
   return (
     <>
@@ -239,22 +288,24 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
                   ) : null}
                 </IMDBBlock>
               </Title>
-              <GenreContainer>
-                {result.genres &&
-                  result.genres.map((genre) => <Genre>{genre.name}</Genre>)}
-              </GenreContainer>
-              <ReleaseDate>
-                Date -{" "}
-                {result.release_date
-                  ? result.release_date.substring(0, 4)
-                  : result.first_air_date.substring(0, 4)}
-              </ReleaseDate>
-              <Runtime>
-                Runtime -{" "}
-                {result.runtime ? result.runtime : result.episode_run_time}
-                min
-              </Runtime>
-              <Rating>Rating - {result.vote_average}/10</Rating>
+              <ItemContainer>
+                <GenreContainer>
+                  {result.genres &&
+                    result.genres.map((genre) => <Genre>{genre.name}</Genre>)}
+                </GenreContainer>
+                <ReleaseDate>
+                  Date -{" "}
+                  {result.release_date
+                    ? result.release_date.substring(0, 4)
+                    : result.first_air_date.substring(0, 4)}
+                </ReleaseDate>
+                <Runtime>
+                  Runtime -{" "}
+                  {result.runtime ? result.runtime : result.episode_run_time}
+                  min
+                </Runtime>
+                <Rating>Rating - {result.vote_average}/10</Rating>
+              </ItemContainer>
               <OverviewContainer>
                 Overview
                 <Overview>{result.overview}</Overview>
