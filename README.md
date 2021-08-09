@@ -1,14 +1,13 @@
-Extension Movie App before
+Extension Movie App 
 
 ## Screens
 
 - [x] Home
-
+- [x] Movies
 - [x] TV Shows
-
 - [x] Detail
-
 - [x] Search
+- [x] Person
 
 ## API Verbs
 
@@ -17,24 +16,11 @@ Extension Movie App before
 - [x] Popular(TV, Movie)
 - [x] Top Rated(Tv)
 - [x] Airing Today(TV)
+- [x] Trending(Movie, TV)
 - [x] Movie Detail
 - [x] TV Detail
 - [x] Search
-- [x] IMDB Link
-- [x] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] User Review (Movie, Tv)
-- [ ] Get Similar Movies
-- [ ] Get Trending (Movie, Tv)
-- [ ] Credit for Actor
-
-## Additional
-
-- [ ] Make Slider
-- [ ] Add Related Movie List
-- [ ] Show Actor's Information - When I click
-- [ ] Authentication
-- [ ] Add animation
-- [ ] More pretty UI
+- [x] Person
 
 # Preview
 
