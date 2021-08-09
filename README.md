@@ -10,8 +10,6 @@ Extension Movie App before
 
 - [x] Search
 
-  
-
 ## API Verbs
 
 - [x] Now Playing(Movie)
@@ -24,8 +22,10 @@ Extension Movie App before
 - [x] Search
 - [x] IMDB Link
 - [x] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-
-
+- [ ] User Review (Movie, Tv)
+- [ ] Get Similar Movies
+- [ ] Get Trending (Movie, Tv)
+- [ ] Credit for Actor
 
 ## Additional
 
