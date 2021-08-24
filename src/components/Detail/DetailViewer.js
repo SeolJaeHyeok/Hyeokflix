@@ -250,6 +250,8 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: 1,
+    autoplaySpeed: 5000,
   };
   return (
     <>

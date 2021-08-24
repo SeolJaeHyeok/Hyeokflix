@@ -10,13 +10,6 @@ const VideoBlock = styled.div`
 `;
 
 const Video = ({ videos }) => {
-  // const opts = {
-  //   height: "400",
-  //   width: "600",
-  //   playerVars: {
-  //     autoplay: 0,
-  //   },
-  // };
   return videos.length !== 0 ? (
     <VideoBlock>
       {/* <Youtube videoId={videos.key} key={videos.id} opts={opts} /> 
