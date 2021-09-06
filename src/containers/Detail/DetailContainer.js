@@ -10,7 +10,7 @@ const DetailContainer = ({ match, location, history }) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isMovie, setIsMovie] = useState(true);
+  const [isMovie, setIsMovie] = useState(null);
 
   const getDetailDataFromApi = async () => {
     const parsedId = parseInt(params.id);
