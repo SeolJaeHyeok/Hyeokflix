@@ -92,8 +92,8 @@ const Background = (trending) => {
 
   return (
     <>
-      <div class="video-background">
-        <div class="video-foreground">
+      <div className="video-background">
+        <div className="video-foreground">
           <YouTube
             id="yt_id"
             videoId={data?.videos?.results[0]?.key}
@@ -103,7 +103,7 @@ const Background = (trending) => {
         </div>
       </div>
       <div id="vidtop-content">
-        <div class="vid-info">
+        <div className="vid-info">
           <h1>{data && data.title ? data.title : data.name}</h1>
           <p>{data && data.overview}</p>
           {data.original_title ? (
@@ -112,7 +112,7 @@ const Background = (trending) => {
             <SLink to={`/show/${data.id}`}> 더 알아보기</SLink>
           )}
         </div>
-        <div class="vid-control">
+        <div className="vid-control">
           {Play ? (
             <Button onClick={startVideo}>
               <FaPlayCircle />

@@ -19,9 +19,19 @@ const DetailContainer = ({ match, location, history }) => {
       return history.push("/");
     }
 
+    {
+      /* 
+    Moive API와 TV API를 구별해서 받아오는게 안되는 중
+    isMovie 변수가 제대로 변경되지 않고 있음
+    저번에 디버깅 했을 때는 Movie, TV 전부 다 제대로 받아왔는데 갑자기 안되네.. 
+    그 외의 기능은 문제 없이 실행되고 있음
+    추후에 이 부분 디버깅 필요!!
+  */
+    }
+
     let result = null;
     setIsMovie(pathname.includes("/movie/"));
-
+    // console.log(isMovie);
     try {
       if (isMovie) {
         ({ data: result } = await movieApi.movieDetail(parsedId));
