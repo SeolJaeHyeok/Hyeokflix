@@ -10,7 +10,7 @@ const VideoBlock = styled.div`
 `;
 
 const Video = ({ videos }) => {
-  return videos.length !== 0 ? (
+  return videos ? (
     <VideoBlock>
       {/* <Youtube videoId={videos.key} key={videos.id} opts={opts} /> 
       이 방식으로 유튜브 동영상 렌더링 시키니까 error 발생해가지고 원인 찾아보니 https://youtube.com 도메인을 추가해줘야 한다고 나오길래
