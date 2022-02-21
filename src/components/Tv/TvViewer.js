@@ -29,7 +29,7 @@ const TvViewer = ({
     ) : (
       <TvViewerBlock>
         {trending && trending.length > 0 && (
-          <PosterSlider nowPlaying={trending} isMovie={true} />
+          <PosterSlider nowPlaying={trending} isMovie={false} />
         )}
         {trending && trending.length > 0 && (
           <Section title="Trending Series">

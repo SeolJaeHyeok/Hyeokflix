@@ -45,7 +45,6 @@ const SearchViewer = ({
     <Helmet>
       <title>Search | Hyeokflix</title>
     </Helmet>
-
     <SearchBlock>
       <Form onSubmit={handleSubmit}>
         <Input
@@ -89,20 +88,6 @@ const SearchViewer = ({
                     show.first_air_date && show.first_air_date.substring(0, 4)
                   }
                   isMovie={false}
-                />
-              ))}
-            </Section>
-          )}
-          {result && result.length > 0 && (
-            <Section title="검색 결과">
-              {result.map((res) => (
-                <Poster
-                  key={res.id}
-                  id={res.id}
-                  imageUrl={res.poster_path}
-                  title={res.title}
-                  year={res.release_date && res.release_date.substring(0, 4)}
-                  isMovie={true}
                 />
               ))}
             </Section>

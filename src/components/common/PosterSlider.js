@@ -67,6 +67,7 @@ const PosterSlider = ({ nowPlaying, isMovie }) => {
     infinite: true,
     step: 1,
   };
+  // console.log(isMovie);
 
   useEffect(() => {
     if (handler) clearInterval(handler);

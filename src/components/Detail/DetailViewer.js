@@ -253,13 +253,13 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
     autoplay: 1,
     autoplaySpeed: 5000,
   };
+  console.log(result);
   return (
     <>
       <Helmet>
         <title>Detail | Hyeokflix</title>
         {/* <title>
-          {result.original_title ? result.original_title : result.original_name}{" "}
-          | Hyeokflix
+          {result.title ? result.title : result.name} | Hyeokflix
         </title> */}
       </Helmet>
       {loading ? (
@@ -303,7 +303,7 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
                 </ReleaseDate>
                 <Runtime>
                   Runtime -{" "}
-                  {result.runtime ? result.runtime : result.episode_run_time}
+                  {result.runtime ? result.runtime : result.episode_run_time[0]}
                   min
                 </Runtime>
                 <Rating>Rating - {result.vote_average}/10</Rating>
@@ -332,14 +332,6 @@ const DetailViewer = ({ result, error, loading, match, location }) => {
               >
                 Credits
               </Tab>
-              {result.original_name && (
-                <Tab
-                  current={location.pathname.includes("/series").toString()}
-                  to={match.url + "/series"}
-                >
-                  Series
-                </Tab>
-              )}
             </TabContainer>
           </Content>
           <Switch>
