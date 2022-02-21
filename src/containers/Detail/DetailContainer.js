@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { movieApi, tvApi } from "../../lib/api";
-import { useParams, withRouter } from "react-router";
+import { withRouter, useParams } from "react-router-dom";
 import DetailViewer from "components/Detail/DetailViewer";
 
 const DetailContainer = ({ match, location, history }) => {
