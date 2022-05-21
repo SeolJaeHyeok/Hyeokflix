@@ -47,7 +47,7 @@ You can enjoy this app [Here](https://blissful-colden-d3fd0d.netlify.app/)
 
 ---
 
-현재 `TypeScript`,`react-query`, `recoil` 등 새로운 기술 스택을 가지고 프로젝트 진행 중...
+추후 `TypeScript`,`react-query`, `recoil` 등 새로운 기술 스택을 가지고 프로젝트 진행 예정
 
 [Check](https://github.com/SeolJaeHyeok/2021-hyeokflix) 
 
